@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
+}
+.container {
+  width: 98%;
+  margin: 0 auto;
+}
+.hover-menu:hover .hoverd {
+  opacity: 1;
+  visibility: visible;
+}
+.banner-bg {
+  background-image: url("../src/assets/pexels-quark-studio-3201920-scaled.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.m-banner {
+  background-image: url("../src/assets/hero-image-home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bg-brand {
+  background-image: url("../src/assets/pexels-roman-odintsov-4552981-scaled.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: 0.3s ease;
+}
+.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  transition: 0.3s ease;
+}
+.submitActive {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+.submitInactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+/* media query */
+@media screen and (min-width: 1201px) {
+  .container {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
