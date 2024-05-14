@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../assets/Logo.jpg";
+import Logo from "../assets/Logo.png";
 import Avater from "../assets/default_avatar.jpg";
 import MobileNav from "./Mobile-nav";
 import { useRef, useState } from "react";
@@ -22,7 +22,7 @@ function Header() {
         <div className="flex justify-between items-center h-24 md:w-full">
           <div className="pl-3 lg:pl-0">
             <Link to="/">
-              <img src={Logo} alt="" className="w-16 rounded-md" />
+              <img src={Logo} alt="" className="w-20 rounded-md" />
             </Link>
           </div>
           <div className="hidden lg:block">
@@ -134,13 +134,17 @@ function Header() {
 
               {userAuth?.userToken && (
                 <li>
-                  <img
-                    src={
-                      userAuth?.user?.profile ? userAuth?.user?.profile : Avater
-                    }
-                    alt=""
-                    className="w-10 rounded-full h-10 object-cover"
-                  />
+                  <Link to="/user-profile">
+                    <img
+                      src={
+                        userAuth?.user?.profile
+                          ? userAuth?.user?.profile
+                          : Avater
+                      }
+                      alt=""
+                      className="w-10 rounded-full h-10 object-cover"
+                    />
+                  </Link>
                 </li>
               )}
             </ul>
@@ -158,11 +162,13 @@ function Header() {
             ></i>
           </button>
           {userAuth?.userToken && (
-            <img
-              src={userAuth?.user?.profile ? userAuth?.user?.profile : Avater}
-              className="rounded-full w-10 h-10 object-cover"
-              alt=""
-            />
+            <Link to="/user-profile">
+              <img
+                src={userAuth?.user?.profile ? userAuth?.user?.profile : Avater}
+                className="rounded-full w-10 h-10 object-cover"
+                alt=""
+              />
+            </Link>
           )}
         </div>
       </div>

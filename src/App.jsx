@@ -23,6 +23,9 @@ import Faq from "./pages/Faq";
 import TermsAndCodition from "./pages/Terms-and-codition";
 import Privacy from "./pages/Privacy";
 import BrandContract from "./pages/Brand-contract";
+import AboutInfo from "./component/About-info";
+import Posts from "./component/Posts";
+import DescriptionTab from "./component/Description-tab";
 
 function App() {
   return (
@@ -49,8 +52,14 @@ function App() {
         <Route path="/account" element={<Account />}>
           <Route path="/account" element={<AccountTab />} />
           <Route path="/account/change-password" element={<ChangePassword />} />
+          <Route path="/account/description" element={<DescriptionTab />} />
           <Route path="/account/privacy" element={<PrivacyTab />} />
           <Route path="/account/delete" element={<DeleteAccountTab />} />
+        </Route>
+
+        <Route path="/user-profile" element={<UserProfile />}>
+          <Route path="/user-profile" element={<AboutInfo />} />
+          <Route path="/user-profile/posts" element={<Posts />} />
         </Route>
       </Routes>
       <Footer />

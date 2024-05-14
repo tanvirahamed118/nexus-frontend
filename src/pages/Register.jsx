@@ -127,7 +127,7 @@ function Register() {
                   type="text"
                   name="firstname"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                  placeholder="Frist name"
+                  placeholder="First name"
                   onChange={(e) => handleChange(e)}
                   value={firstname}
                   required
@@ -252,7 +252,7 @@ function Register() {
                   Instagram*
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   name="instagram"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
                   placeholder="@yourusername"
@@ -266,7 +266,7 @@ function Register() {
                   Tiktok
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   name="tiktok"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
                   placeholder="@yourusername"
@@ -281,7 +281,7 @@ function Register() {
                   YouTube
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   name="youtube"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
                   placeholder="Channel URL"
@@ -294,7 +294,7 @@ function Register() {
                   Snapchat
                 </label>
                 <input
-                  type="url"
+                  type="text"
                   name="snapchat"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
                   placeholder="@yourusername"
@@ -308,7 +308,7 @@ function Register() {
                 Facebook
               </label>
               <input
-                type="url"
+                type="text"
                 name="facebook"
                 className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
                 placeholder="@yourusername"

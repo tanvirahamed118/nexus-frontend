@@ -12,6 +12,7 @@ function AccountTab() {
   const id = userInfo?.user?._id;
   const { data: getData } = useGetOneUserQuery(id);
   const [profile, setProfile] = useState(null);
+  const [video, setVideo] = useState(null);
   const [user, setUser] = useState({
     username: "",
     firstname: "",
@@ -19,6 +20,7 @@ function AccountTab() {
     email: "",
   });
   const profileRef = useRef();
+  const instaRef = useRef();
   const { firstname, lastname, email, username } = user || {};
 
   const handleChange = (e) => {
@@ -35,6 +37,7 @@ function AccountTab() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("profile", profile);
+    formData.append("video", video);
     Object.keys(user).forEach((key) => {
       formData.append(key, user[key]);
     });
@@ -109,6 +112,21 @@ function AccountTab() {
               className="border-none"
               ref={profileRef}
               onChange={(e) => setProfile(e.target.files[0])}
+              required
+            />
+          </span>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="" className="text-lg text-black font-bold">
+            <i className="fa-solid fa-image"></i> Instagram Statistics video*
+          </label>
+          <span className="border border-dashed border-gray-200 w-full h-32 flex justify-center items-center rounded-md">
+            <input
+              type="file"
+              name="username"
+              className="border-none"
+              ref={instaRef}
+              onChange={(e) => setVideo(e.target.files[0])}
               required
             />
           </span>

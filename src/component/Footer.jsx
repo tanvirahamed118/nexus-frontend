@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/Logo.jpg";
+import Logo from "../assets/Logo.png";
 
 function Footer() {
   return (
@@ -8,7 +8,7 @@ function Footer() {
         <div className="container flex flex-col md:flex-row md:justify-around gap-5 items-center">
           <div>
             <Link to="/">
-              <img src={Logo} alt="" className="w-20 rounded-lg" />
+              <img src={Logo} alt="" className="w-24 rounded-lg bg-white p-2" />
             </Link>
           </div>
           <div className="mt-5">
@@ -56,6 +56,9 @@ function Footer() {
             </Link>
             <Link to="">
               <i className="fa-brands fa-linkedin text-[#b6b6b6] text-xl hover:text-white"></i>
+            </Link>
+            <Link to="">
+              <i className="fa-brands fa-tiktok text-[#b6b6b6] text-xl hover:text-white"></i>
             </Link>
           </div>
         </div>

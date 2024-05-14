@@ -1,8 +1,14 @@
 import { useDispatch } from "react-redux";
 import { choseCategory } from "../redux/rtk/features/filter/categorySlice";
+import { useGetAllEventQuery } from "../redux/rtk/features/event/eventApi";
 
 function Filter() {
   const dispatch = useDispatch();
+  const { data } = useGetAllEventQuery();
+  const category = data?.filter(
+    (obj, index, self) =>
+      index === self.findIndex((t) => t.category === obj.category)
+  );
 
   return (
     <div className="flex items-center justify-between pb-10">
@@ -14,9 +20,13 @@ function Filter() {
         onChange={(e) => dispatch(choseCategory(e.target.value))}
       >
         <option value="">All</option>
-        <option value="Brunch for 2">Brunch for 2</option>
-        <option value="Lunch/Dinner for 2">Lunch/Dinner for 2</option>
-        <option value="Tasting Box">Tasting Box</option>
+        {category?.map((item) => {
+          return (
+            <option key={item?._id} value={item?.category}>
+              {item?.category}
+            </option>
+          );
+        })}
       </select>
     </div>
   );

@@ -80,7 +80,7 @@ function Login() {
                 htmlFor="check"
                 className="text-lg text-[#888] font-normal"
               >
-                Keep me singed in
+                Keep me signed in
               </label>
             </div>
             <div className="flex gap-5">
@@ -122,7 +122,7 @@ function Login() {
                 to="/reset"
                 className="text-lg text-[#888] font-normal text-center block hover:underline"
               >
-                Forget your password?
+                Forgot your password?
               </Link>
             </div>
           </form>

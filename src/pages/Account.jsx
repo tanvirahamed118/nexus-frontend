@@ -62,6 +62,16 @@ function Account() {
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
               <li className="flex justify-between bg-[#eee] hover:bg-[#DDDDDD] border-b border-gray-300">
+                <i className="fa-solid fa-circle-info text-[#444] text-lg py-2 px-5 border-r border-gray-300"></i>
+                <Link
+                  to="/account/description"
+                  className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
+                >
+                  Change Description
+                </Link>
+                <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
+              </li>
+              <li className="flex justify-between bg-[#eee] hover:bg-[#DDDDDD] border-b border-gray-300">
                 <i className="fa-solid fa-lock text-[#444] text-lg py-2 px-5 border-r border-gray-300"></i>
                 <Link
                   to="/account/privacy"
@@ -71,6 +81,7 @@ function Account() {
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
+
               <li className="flex justify-between bg-[#eee] hover:bg-[#DDDDDD] border-b border-gray-300">
                 <i className="fa-solid fa-trash text-[#444] text-lg py-2 px-5 border-r border-gray-300"></i>
                 <Link
