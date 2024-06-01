@@ -20,7 +20,7 @@ const Sidebar = () => {
           alt=""
           className="w-14 h-14 object-cover bg-white rounded-full p-3"
         />
-        <Link to="/dashboard" className={Style.mainLogo}>
+        <Link to="/" className={Style.mainLogo}>
           Nexus
         </Link>
       </div>
