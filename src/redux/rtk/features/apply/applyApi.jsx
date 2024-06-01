@@ -26,10 +26,10 @@ export const applyApi = apiSlice.injectEndpoints({
       invalidatesTags: ["update"],
     }),
     updateApply: builder.mutation({
-      query: ({ formData, id }) => ({
+      query: ({ submission, id }) => ({
         url: `/auth/apply/${id}`,
         method: "PATCH",
-        body: formData,
+        body: submission,
       }),
       invalidatesTags: ["update"],
     }),

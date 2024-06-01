@@ -15,7 +15,7 @@ function Events() {
   const slicePost = data?.slice(0, loadMore);
   const navigate = useNavigate();
   const loadMorePost = () => {
-    setLoadMore(loadMore + 3);
+    setLoadMore(loadMore + 4);
   };
   // filters
   const filterByCategory = (item) => {
@@ -54,14 +54,14 @@ function Events() {
   }
   if (!isLoading && !isError && data?.length > 0) {
     content = slicePost?.filter(filterByCategory)?.map((item) => {
-      const { _id, thumbnail, title, category, location, createdAt } =
+      const { _id, eventPic, title, category, location, createdAt } =
         item || {};
       return (
         <Link to={`/event/${_id}`} key={_id}>
           <div className="flex bg-white rounded-xl shadow-md">
             <div className="w-5/12">
               <img
-                src={thumbnail ? thumbnail : Hero}
+                src={eventPic ? eventPic : Hero}
                 alt=""
                 className="w-full h-72 rounded-l-xl object-cover"
               />

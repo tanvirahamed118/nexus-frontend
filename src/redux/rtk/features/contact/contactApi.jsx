@@ -26,10 +26,10 @@ export const contactApi = apiSlice.injectEndpoints({
       invalidatesTags: ["update"],
     }),
     updateContact: builder.mutation({
-      query: ({ formData, id }) => ({
+      query: ({ emails, id }) => ({
         url: `/auth/message/${id}`,
         method: "PATCH",
-        body: formData,
+        body: emails,
       }),
       invalidatesTags: ["update"],
     }),

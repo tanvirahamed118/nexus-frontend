@@ -37,7 +37,7 @@ function MyEvent() {
           <table className="border-collapse w-full bg-white border border-gray-200">
             <tr>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Profile
+                Event Image
               </th>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
                 Event

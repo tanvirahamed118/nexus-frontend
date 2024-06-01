@@ -41,11 +41,26 @@ export const userAuthApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["update"],
     }),
+    updateUserStatus: builder.mutation({
+      query: ({ status, id }) => ({
+        url: `/auth/user/status/${id}`,
+        method: "PATCH",
+        body: { status },
+      }),
+      invalidatesTags: ["update"],
+    }),
     deleteUser: builder.mutation({
       query: ({ user, id }) => ({
         url: `/auth/user/${id}`,
         method: "DELETE",
         body: user,
+      }),
+      invalidatesTags: ["update"],
+    }),
+    deleteUserBy: builder.mutation({
+      query: (id) => ({
+        url: `/auth/user/by/${id}`,
+        method: "DELETE",
       }),
       invalidatesTags: ["update"],
     }),
@@ -119,5 +134,7 @@ export const {
   useChangeOTPUserMutation,
   useUpdateUserMutation,
   useUpdateUserPassMutation,
+  useUpdateUserStatusMutation,
   useDeleteUserMutation,
+  useDeleteUserByMutation,
 } = userAuthApi;

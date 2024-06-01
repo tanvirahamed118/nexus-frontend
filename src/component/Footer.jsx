@@ -45,6 +45,14 @@ function Footer() {
                   privacy
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/dashboard/login"
+                  className="text-[#ccc] font-medium text-base uppercase hover:text-white"
+                >
+                  Dashboard
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="flex gap-5">

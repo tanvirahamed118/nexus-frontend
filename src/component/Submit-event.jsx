@@ -10,7 +10,8 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
   const [createApply, { data: resData, isLoading, isError, isSuccess, error }] =
     useCreateApplyMutation();
   const status = "Require submission";
-  const eventPic = getData?.thumbnail;
+  const eventPic = getData?.eventPic;
+
   const [data, setData] = useState({
     date: "",
     time: "",

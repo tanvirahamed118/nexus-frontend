@@ -1,0 +1,68 @@
+/* upc table */
+.upcSection {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.upcContainer {
+  width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+.upcContainer h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #141414;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  padding-bottom: 20px;
+}
+.upcTable {
+  overflow-y: auto;
+  height: 75vh;
+}
+.upcTable table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 0px 8px 0px;
+}
+.upcTable table tr th {
+  background-color: #5d4b41;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+td,
+th {
+  border: 1px solid #f5f5f5;
+  text-align: left;
+  padding: 10px;
+}
+
+.upcTable table tr {
+  background-color: #fff;
+  color: #141414;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+/* upc table */
+/* media query */
+@media screen and (max-width: 1400px) {
+  .upcTable {
+    overflow-x: auto;
+  }
+  .upcContainer {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .upcContainer h1 {
+    font-size: 25px;
+  }
+}

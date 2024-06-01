@@ -16,7 +16,7 @@ function DescriptionTab() {
   const [updateUser, { data: getData, isLoading, isError, isSuccess, error }] =
     useUpdateUserMutation();
   const { bio } = formData || {};
-  console.log(formData?.bio);
+
   const handleChange = (e) => {
     setUser({
       ...formData,
@@ -42,7 +42,7 @@ function DescriptionTab() {
       toast.success(getData?.message);
     }
   }, [isError, isSuccess, getData, error]);
-  console.log(data);
+
   return (
     <div>
       <span className="flex gap-2 items-center">
