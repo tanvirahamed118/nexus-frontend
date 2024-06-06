@@ -77,10 +77,14 @@ const DashboardSubmissions = () => {
                               className="w-14 h-14 object-cover rounded-md"
                             />
                           </td>
-                          <td>{item?.eventTitle}</td>
+                          <td>{item?.eventTitle?.slice(0, 40)}...</td>
                           <td>{item?.date}</td>
                           <td>{item?.time}</td>
-                          <td>{item?.message ? item?.message : "Empty"}</td>
+                          <td>
+                            {item?.message
+                              ? `${item?.message?.slice(0, 40)}...`
+                              : "Empty"}
+                          </td>
                           <td>
                             <p
                               className={

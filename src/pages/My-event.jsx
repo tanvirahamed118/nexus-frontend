@@ -57,7 +57,7 @@ function MyEvent() {
 
               return (
                 <tr key={item?._id}>
-                  <td className="border border-[#dddddd] text-left px-5 py-3">
+                  <td className="border border-[#dddddd] text-left px-5 py-3 w-[12%]">
                     <img
                       src={eventPic ? eventPic : Avater}
                       alt=""
@@ -67,20 +67,20 @@ function MyEvent() {
                   <td className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-normal capitalize">
                     {eventTitle}
                   </td>
-                  <td className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-nomal capitalize">
+                  <td className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-nomal capitalize w-2/12">
                     {new Date(createdAt).toDateString()}
                   </td>
-                  <td className="border border-[#dddddd] text-left px-5 py-3">
+                  <td className="border border-[#dddddd] text-left px-5 py-3 w-[16%]">
                     <button
                       className={
                         status.toLowerCase() === "require submission"
-                          ? "bg-[#36b9cc] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize"
+                          ? "bg-[#36b9cc] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize w-full"
                           : status.toLowerCase() === "submitted"
-                          ? "bg-[#6413b1] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize"
+                          ? "bg-[#6413b1] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize w-full"
                           : status.toLowerCase() === "need approval"
-                          ? "bg-[#1c45b4] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize"
+                          ? "bg-[#1c45b4] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize w-full"
                           : status.toLowerCase() === "canceled"
-                          ? "bg-[#5a5c69] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize"
+                          ? "bg-[#5a5c69] py-0.5 px-3 rounded-md text-white text-sm font-normal capitalize w-full"
                           : null
                       }
                     >

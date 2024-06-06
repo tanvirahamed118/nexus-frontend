@@ -73,9 +73,9 @@ const DashboardBrands = () => {
                           <td>{item?.nameOfEST}</td>
                           <td>{item?.RPPersonName}</td>
                           <td>{item?.position}</td>
-                          <td>{item?.email}</td>
+                          <td>{item?.email?.slice(0, 20)}...</td>
                           <td>{item?.phone}</td>
-                          <td>{item?.message}</td>
+                          <td>{item?.message?.slice(0, 40)}...</td>
 
                           <td className="flex gap-2 items-center">
                             <Link

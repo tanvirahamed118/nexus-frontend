@@ -77,7 +77,7 @@ const DashboardEvents = () => {
                               "-" +
                               new Date(item.createdAt).getDate()}
                           </td>
-                          <td>{item?.title}</td>
+                          <td>{item?.title?.slice(0, 40)}...</td>
                           <td>{item?.category}</td>
                           <td>{item?.adminName}</td>
                           <td className="flex gap-2 items-center">

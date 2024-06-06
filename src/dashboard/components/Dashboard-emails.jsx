@@ -70,8 +70,8 @@ const DashboardEmails = () => {
                               "-" +
                               new Date(item.createdAt).getDate()}
                           </td>
-                          <td>{item?.name}</td>
-                          <td>{item?.email}</td>
+                          <td>{item?.name?.slice(0, 20)}...</td>
+                          <td>{item?.email?.slice(0, 20)}...</td>
                           <td>{`${item?.messages?.slice(0, 20)}...`}</td>
 
                           <td className="flex gap-2 items-center">

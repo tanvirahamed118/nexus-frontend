@@ -21,12 +21,12 @@ function Events() {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-col gap-1 justify-center items-center w-8/12">
+          <div className="flex flex-col gap-1 justify-center items-center w-8/12 px-5">
             <Link
               to={`/event/${_id}`}
               className="text-base text-[#cfa361] font-bold md:text-2xl capitalize hover:underline"
             >
-              {title}
+              {title?.slice(0, 100)}...
             </Link>
             <h2 className="text-sm text-black font-normal md:text-xl capitalize">
               {category}

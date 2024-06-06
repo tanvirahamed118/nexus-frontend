@@ -72,7 +72,7 @@ const DashboardUsers = () => {
                               className="w-14 h-14 object-cover rounded-md"
                             />
                           </td>
-                          <td>{item?.email}</td>
+                          <td>{item?.email?.slice(0, 20)}...</td>
                           <td>{item?.country}</td>
                           <td>{item?.phone}</td>
                           <td>
@@ -92,7 +92,7 @@ const DashboardUsers = () => {
                               className="text-white bg-[#5d4b41] hover:bg-[#695145] py-2 px-3 rounded-md flex gap-2 items-center"
                             >
                               <i className="fa-solid fa-pen-to-square"></i>
-                              <p>UPdate Status</p>
+                              <p>Update Status</p>
                             </Link>
                             <button
                               className="text-white bg-[#5d4b41] hover:bg-[#695145] py-2 px-3 rounded-md"

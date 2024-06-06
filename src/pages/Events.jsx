@@ -69,7 +69,7 @@ function Events() {
             <div className="w-7/12 p-5 flex flex-col justify-between">
               <div className="flex flex-col gap-2">
                 <h2 className="text-[#3a3a3a] text-3xl font-bold capitalize">
-                  {title}
+                  {title?.slice(0, 50)}...
                 </h2>
                 <span className="flex gap-2 items-center">
                   <i className="fa-solid fa-location-dot text-sm text-[#976d44]"></i>
