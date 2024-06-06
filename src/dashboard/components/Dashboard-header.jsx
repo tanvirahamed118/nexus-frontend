@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 import { useEffect, useRef, useState } from "react";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
+import Logo from "../../assets/Logo.png";
 const DashboardHeader = () => {
   const [menu, setMenu] = useState(false);
   const navigate = useNavigate();
@@ -35,9 +36,13 @@ const DashboardHeader = () => {
         </div>
         <div className={Style.headerLogo}>
           <span>
-            <p>WH</p>
-            <Link to="/dashboard" className={Style.mainLogo}>
-              Warehouse
+            <Link to="/" className="flex gap-3 items-center">
+              <img
+                src={Logo}
+                alt=""
+                className="w-14 h-14 object-cover bg-white rounded-full p-3 shadow-lg"
+              />
+              <h3 className="text-2xl font-bold text-[#5D4B41]">Nexus</h3>
             </Link>
           </span>
         </div>

@@ -29,7 +29,7 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
-  color: #ff4719;
+  color: #5d4b41;
   border-radius: 50px;
   background-color: #ecf0f3;
   width: 50px;
@@ -70,7 +70,7 @@
 }
 .dashboardNav ul li:hover {
   padding-left: 8px;
-  color: #fff;
+  color: #ffffff98;
 }
 .dashboardNav ul li svg {
   font-size: 15px;
