@@ -15,12 +15,12 @@ const Sidebar = () => {
   return (
     <div className={Style.dashboardNav}>
       <div className={Style.dashboardLogo}>
-        <img
-          src={Logo}
-          alt=""
-          className="w-14 h-14 object-cover bg-white rounded-full p-3"
-        />
         <Link to="/" className={Style.mainLogo}>
+          <img
+            src={Logo}
+            alt=""
+            className="w-14 h-14 object-cover bg-white rounded-full p-3"
+          />
           Nexus
         </Link>
       </div>

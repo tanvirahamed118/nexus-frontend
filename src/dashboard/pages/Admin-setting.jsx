@@ -246,7 +246,7 @@ const AdminSetting = () => {
             </div>
             <button
               type="submit"
-              className="bg-black text-base font-bold uppercase text-white rounded-md w-full py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
+              className="bg-black text-base font-bold uppercase text-white rounded-md !w-auto py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
             >
               {isLoading ? (
                 <>
@@ -264,10 +264,10 @@ const AdminSetting = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading</p>
+                  <p>Loading...</p>
                 </>
               ) : (
-                "Create"
+                "Save Changes"
               )}
             </button>
           </form>
