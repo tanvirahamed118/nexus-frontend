@@ -258,7 +258,7 @@ const CreateEvent = () => {
             </div>
             <button
               type="submit"
-              className="bg-black text-base font-bold uppercase text-white rounded-md w-full py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
+              className="bg-black text-base font-bold uppercase text-white rounded-md !w-auto py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
             >
               {isLoading ? (
                 <>
