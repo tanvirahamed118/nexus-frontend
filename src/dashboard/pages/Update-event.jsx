@@ -196,8 +196,12 @@ const UpdateEvent = () => {
                       <option value="" selected disabled>
                         Select One
                       </option>
-                      <option value="Tail">Tail</option>
-                      <option value="Onaw">Onaw</option>
+                      <option value="Tail">Food and beverage</option>
+                      <option value="Onaw">Fashion and Apparel</option>
+                      <option value="Onaw">Health and Fitness</option>
+                      <option value="Onaw">Entertainment and Media</option>
+                      <option value="Onaw">Hotels and Villas</option>
+                      <option value="Onaw">Products</option>
                     </select>
                   </span>
                 </div>

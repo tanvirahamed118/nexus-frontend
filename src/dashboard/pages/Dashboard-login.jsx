@@ -82,7 +82,7 @@ const DashboardLogin = () => {
           </span>
           <button
             type="submit"
-            className="bg-black text-base font-bold uppercase text-white rounded-md w-full py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
+            className="bg-black text-base font-bold uppercase !text-white rounded-md w-full py-4 text-center hover:bg-[#3A3A3A] flex justify-center items-center gap-2"
           >
             {isLoading ? (
               <>
@@ -92,7 +92,7 @@ const DashboardLogin = () => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6 animate-spin"
+                  className="w-6 h-6 animate-spin !text-white"
                 >
                   <path
                     strokeLinecap="round"

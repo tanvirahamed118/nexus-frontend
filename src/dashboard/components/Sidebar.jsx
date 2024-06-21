@@ -1,6 +1,6 @@
 import Style from "../../dashboard/styles/Dashboard.module.css";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/Logo-white.png";
 import {
   FaThLarge,
   FaUserCircle,
@@ -16,12 +16,7 @@ const Sidebar = () => {
     <div className={Style.dashboardNav}>
       <div className={Style.dashboardLogo}>
         <Link to="/" className={Style.mainLogo}>
-          <img
-            src={Logo}
-            alt=""
-            className="w-14 h-14 object-cover bg-white rounded-full p-3"
-          />
-          Nexus
+          <img src={Logo} alt="" className="w-40" />
         </Link>
       </div>
       <ul>

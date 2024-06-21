@@ -27,11 +27,11 @@
   font-size: 40px;
   font-weight: 600;
   color: #ff4719;
-  border-radius: 50px;
+  border-radius: 100px;
   background-color: #ecf0f3;
   box-shadow: 6px 6px 10px #cbced1, -6px -6px 10px white;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@
   font-family: "Lobster", cursive;
 }
 .container .logo img {
-  width: 50px;
+  width: 100px;
 }
 .container form {
   display: flex;
