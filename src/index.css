@@ -15,7 +15,7 @@ body {
   visibility: visible;
 }
 .banner-bg {
-  background-image: url("../src/assets/pexels-quark-studio-3201920-scaled.jpg");
+  background-image: url("../src/assets/BANNER.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

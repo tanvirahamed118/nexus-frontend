@@ -26,7 +26,7 @@ function SingleEvent() {
     adminName,
     adminPic,
     star,
-    thumbnail,
+    eventPic,
     condition,
     requirement,
     description,
@@ -64,7 +64,7 @@ function SingleEvent() {
           <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12">
             <div className="w-5/12 h-full">
               <img
-                src={thumbnail ? thumbnail : Hero}
+                src={eventPic ? eventPic : Hero}
                 alt=""
                 className="w-full h-full rounded-l-xl object-cover"
               />

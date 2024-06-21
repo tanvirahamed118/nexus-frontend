@@ -11,12 +11,12 @@ function Events() {
   }
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.slice(0, 8)?.map((item) => {
-      const { _id, thumbnail, title, category } = item || {};
+      const { _id, eventPic, title, category } = item || {};
       return (
         <div key={_id} className="flex">
           <div className="w-4/12 h-80">
             <img
-              src={thumbnail ? thumbnail : Banner}
+              src={eventPic ? eventPic : Banner}
               alt=""
               className="w-full h-full object-cover"
             />
