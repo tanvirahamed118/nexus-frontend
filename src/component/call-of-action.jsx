@@ -5,7 +5,7 @@ function CallOfAction() {
   const user = JSON.parse(userAuth);
   return (
     <section className="banner-bg relative">
-      <div className="relative bg-gradient-to-t from-[#c8954950] to-[#000000de] w-full h-[60vh] md:h-[70vh] flex items-center flex-col gap-5 pt-32 md:pt-40">
+      <div className="relative bg-gradient-to-t from-[#7a5c2d50] to-[#000000de] w-full h-[60vh] md:h-[70vh] flex items-center flex-col gap-5 pt-32 md:pt-40">
         <div className="flex flex-col justify-center items-center gap-3 md:gap-5">
           <h2 className="text-lg text-white font-bold uppercase md:text-5xl">
             BE ONE OF OUR EXCLUSIVE MEMBERS
@@ -13,7 +13,7 @@ function CallOfAction() {
           <h2 className="text-[#ffc670] text-2xl font-bold italic md:text-5xl">
             ARE YOU AN INFLUENCER ?
           </h2>
-          <h3 className="text-[#ffebcc] text-base font-bold md:text-3xl">
+          <h3 className="text-white text-base font-bold md:text-3xl">
             Get incredible invitations to live your best life !
           </h3>
           {!user?.userToken && (
@@ -46,12 +46,12 @@ function CallOfAction() {
         <h2 className="text-white text-sm font-bold md:text-2xl">
           SCROLL DOWN FOR UPCOMING EVENTS
         </h2>
-        <a href="">
+        <Link to="/">
           <i
             className="fa-solid fa-chevron-down text-white animate-bounce"
             style={{ fontSize: "40px" }}
           ></i>
-        </a>
+        </Link>
       </div>
     </section>
   );

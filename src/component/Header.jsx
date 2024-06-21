@@ -22,7 +22,7 @@ function Header() {
         <div className="flex justify-between items-center h-24 md:w-full">
           <div className="pl-3 lg:pl-0">
             <Link to="/">
-              <img src={Logo} alt="" className="w-20 rounded-md" />
+              <img src={Logo} alt="" className="w-40 rounded-md" />
             </Link>
           </div>
           <div className="hidden lg:block">
