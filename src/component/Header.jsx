@@ -3,8 +3,13 @@ import Logo from "../assets/Logo.png";
 import Avater from "../assets/default_avatar.jpg";
 import MobileNav from "./Mobile-nav";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import Indoneshia from "../assets/indoneshia.png";
+import English from "../assets/english.png";
 
 function Header() {
+  const { t, i18n } = useTranslation();
+
   const user = localStorage.getItem("user");
   const [menu, setMenu] = useState(false);
   const menuref = useRef();
@@ -15,6 +20,10 @@ function Header() {
       localStorage.clear();
       navigate("/");
     }
+  };
+  const changeLanguage = async (lng) => {
+    i18n.changeLanguage(lng);
+    console.log(i18n.changeLanguage(lng));
   };
   return (
     <header className="shadow-[0px_0px_14px_-0px_rgba(0,0,0,0.1)] relative">
@@ -32,7 +41,7 @@ function Header() {
                   to="/"
                   className="text-lg font-normal text-black hover:text-[#cfa361]"
                 >
-                  Home
+                  {t("home")}
                 </Link>
               </li>
               {userAuth?.userToken ? null : (
@@ -41,7 +50,7 @@ function Header() {
                     to="/brand"
                     className="text-lg font-normal text-black hover:text-[#cfa361]"
                   >
-                    Brand
+                    {t("brand")}
                   </Link>
                 </li>
               )}
@@ -51,7 +60,8 @@ function Header() {
                     to=""
                     className="text-base md:text-lg font-normal text-black hover:text-[#cfa361]"
                   >
-                    Events <i className="fa-solid fa-angle-down text-xs"></i>
+                    {t("events")}{" "}
+                    <i className="fa-solid fa-angle-down text-xs"></i>
                   </Link>
                   <ul className="hoverd flex flex-col gap-2 w-60 pl-2 pt-3 absolute bg-white z-10 shadow-2xl top-10 py-5 rounded-md opacity-0 invisible transition-all duration-300">
                     <li className="border-b border-gray-200 pb-3">
@@ -59,7 +69,7 @@ function Header() {
                         to="/event"
                         className="text-base md:text-lg font-normal text-black hover:text-[#cfa361] px-5"
                       >
-                        Find Events
+                        {t("findEvent")}
                       </Link>
                     </li>
                     <li>
@@ -67,7 +77,7 @@ function Header() {
                         to="/my-event"
                         className="text-base md:text-lg font-normal text-black hover:text-[#cfa361] px-5"
                       >
-                        My Event Requests
+                        {t("myEventRequest")}
                       </Link>
                     </li>
                   </ul>
@@ -79,7 +89,7 @@ function Header() {
                   to="/contact"
                   className="text-lg font-normal text-black hover:text-[#cfa361]"
                 >
-                  Contact
+                  {t("contact")}
                 </Link>
               </li>
               {userAuth?.userToken ? null : (
@@ -89,7 +99,7 @@ function Header() {
                       to="/login"
                       className="text-lg font-normal text-black hover:text-[#cfa361]"
                     >
-                      Login
+                      {t("login")}
                     </Link>
                   </li>
                   <li>
@@ -97,7 +107,7 @@ function Header() {
                       to="/register"
                       className="text-lg font-normal text-black hover:text-[#cfa361]"
                     >
-                      Register
+                      {t("register")}
                     </Link>
                   </li>
                 </>
@@ -108,7 +118,8 @@ function Header() {
                     to=""
                     className="text-base md:text-lg font-normal text-black hover:text-[#cfa361]"
                   >
-                    Account <i className="fa-solid fa-angle-down text-xs"></i>
+                    {t("account")}{" "}
+                    <i className="fa-solid fa-angle-down text-xs"></i>
                   </Link>
                   <ul className="hoverd flex flex-col gap-2 w-60 pl-2 pt-3 absolute bg-white z-10 shadow-2xl top-10 right-0 py-5 rounded-md opacity-0 invisible transition-all duration-300">
                     <li className="border-b border-gray-200 pb-3">
@@ -116,7 +127,7 @@ function Header() {
                         to="/account/change-password"
                         className="text-base md:text-lg font-normal text-black hover:text-[#cfa361] px-5"
                       >
-                        Change Password
+                        {t("changePassword")}
                       </Link>
                     </li>
                     <li>
@@ -125,7 +136,7 @@ function Header() {
                         className="text-base md:text-lg font-normal text-black hover:text-[#cfa361] px-5"
                         onClick={() => handleLogout()}
                       >
-                        Logout
+                        {t("logout")}
                       </Link>
                     </li>
                   </ul>
@@ -147,6 +158,20 @@ function Header() {
                   </Link>
                 </li>
               )}
+              <li className="flex gap-5 items-center">
+                <img
+                  src={English}
+                  alt=""
+                  className="w-6 h-4 border border-gray-300 cursor-pointer"
+                  onClick={() => changeLanguage("en")}
+                />
+                <img
+                  src={Indoneshia}
+                  alt=""
+                  className="w-6 h-4 border border-gray-300 cursor-pointer"
+                  onClick={() => changeLanguage("ind")}
+                />
+              </li>
             </ul>
           </div>
         </div>

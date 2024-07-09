@@ -1,50 +1,54 @@
+import { useTranslation } from "react-i18next";
+
 function PrivacyTab() {
+  const { t } = useTranslation();
   return (
     <div>
       <span className="flex gap-2 items-center">
         <i className="fa-solid fa-lock text-[#444] text-lg"></i>
-        <p className="text-black text-xl font-normal capitalize">Privacy</p>
+        <p className="text-black text-xl font-normal capitalize">
+          {t("privacy")}
+        </p>
       </span>
       <form action="" className="flex flex-col gap-4 py-5">
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Profile Privacy *
+            {t("profilePrivacy")} *
           </label>
           <select
             name=""
             id=""
             className="text-base font-normal text-black border border-gray-300 p-3 rounded-md"
           >
-            <option value="Everyone">Everyone</option>
-            <option value="Everyone">Everyone</option>
-            <option value="Everyone">Everyone</option>
+            <option value="Everyone">{t("everyone")}</option>
+            <option value="Everyone">{t("everyone")}</option>
+            <option value="Everyone">{t("everyone")}</option>
           </select>
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Avoid indexing my profile by search engines
+            {t("avoidIndexing")}
           </label>
           <select
             name=""
             id=""
             className="text-base font-normal text-black border border-gray-300 p-3 rounded-md"
           >
-            <option value="Everyone">Everyone</option>
-            <option value="Everyone">Everyone</option>
-            <option value="Everyone">Everyone</option>
+            <option value="Everyone">{t("everyone")}</option>
+            <option value="Everyone">{t("everyone")}</option>
+            <option value="Everyone">{t("everyone")}</option>
           </select>
         </div>
 
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center mt-4">
             <h2 className="text-lg text-black font-bold">
-              Avoid indexing my profile by search engines
+              {t("avoidIndexing")}
             </h2>
             <i className="fa-solid fa-circle-question"></i>
           </div>
           <label htmlFor="" className="text-lg text-black font-normal">
-            Enter your current password to confirm a new export of your personal
-            data.
+            {t("enterCurrentPassword")}
           </label>
           <input
             type="password"
@@ -56,13 +60,12 @@ function PrivacyTab() {
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center">
             <h2 className="text-lg text-black font-bold mt-4">
-              Erase of your data
+              {t("eraseData")}
             </h2>
             <i className="fa-solid fa-circle-question"></i>
           </div>
           <label htmlFor="" className="text-lg text-black font-normal">
-            Enter your current password to confirm the erasure of your personal
-            data.
+            {t("enterCurrentPassword")}
           </label>
           <input
             type="password"
@@ -74,7 +77,7 @@ function PrivacyTab() {
           type="submit"
           className="bg-[#d2b588] text-white font-normal text-base px-5 py-2 rounded-md w-40"
         >
-          Update Privacy
+          {t("updatePrivacy")}
         </button>
       </form>
     </div>

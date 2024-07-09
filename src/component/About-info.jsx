@@ -1,7 +1,9 @@
 import { useGetOneUserQuery } from "../redux/rtk/features/auth/user/authApi";
+import { useTranslation } from "react-i18next";
 
 function AboutInfo() {
   const userAuth = localStorage.getItem("user");
+  const { t } = useTranslation();
   const user = JSON.parse(userAuth);
   const id = user?.user?._id;
   const { data } = useGetOneUserQuery(id);
@@ -11,17 +13,17 @@ function AboutInfo() {
       <div>
         <span className="flex gap-2 items-center">
           <i className="fa-solid fa-circle-info"></i>
-          <p className="text-xl font-bold text-black">About Info</p>
+          <p className="text-xl font-bold text-black">{t("aboutInfo")}</p>
         </span>
         <p className="text-base font-normal text-black">
-          {bio ? bio : "Empty description"}
+          {bio ? bio : t("emptyDescription")}
         </p>
       </div>
       <div>
         <span className="flex gap-2 items-center">
           <i className="fa-solid fa-chart-line"></i>
           <p className="text-xl font-bold text-black">
-            Instagram Statistics video
+            {t("InstagramStatisticsVideo")}
           </p>
         </span>
         <video

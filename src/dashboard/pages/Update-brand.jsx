@@ -1,16 +1,15 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
-
 import { useParams } from "react-router-dom";
 import {
   useGetOneBrandQuery,
   useUpdateBrandMutation,
 } from "../../redux/rtk/features/brand/brandSlice";
+import { useTranslation } from "react-i18next";
 
 const UpdateBrand = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [updateBrand, { data, isLoading, isError, isSuccess, error }] =
     useUpdateBrandMutation();
   const params = useParams();
@@ -59,7 +58,7 @@ const UpdateBrand = () => {
     <>
       <section className={Style.warehouse}>
         <div className={Style.warehouseContainer}>
-          <h2>Update Brand info</h2>
+          <h2>{t("updateBrandInfo")}</h2>
           <form onSubmit={handleSubmit}>
             <div className={Style.formBox}>
               <div className={Style.leftBox}>
@@ -68,7 +67,7 @@ const UpdateBrand = () => {
                     htmlFor="nameOfEST"
                     className="text-xl font-normal text-black"
                   >
-                    Name Of EST
+                    {t("nameOfEst")}
                   </label>
                   <span>
                     <input
@@ -76,7 +75,7 @@ const UpdateBrand = () => {
                       value={nameOfEST}
                       type="text"
                       name="nameOfEST"
-                      placeholder="Enter name Of EST"
+                      placeholder={t("nameOfEst")}
                       id="nameOfEST"
                       required
                     />
@@ -88,7 +87,7 @@ const UpdateBrand = () => {
                     htmlFor="RPPersonName"
                     className="text-xl font-normal text-black"
                   >
-                    RP Person Name
+                    {t("rPPersonName")}
                   </label>
                   <span>
                     <input
@@ -98,7 +97,7 @@ const UpdateBrand = () => {
                       type="text"
                       name="RPPersonName"
                       id="RPPersonName"
-                      placeholder="Enter RP Person Name"
+                      placeholder={t("rPPersonName")}
                     />
                   </span>
                 </div>
@@ -107,7 +106,7 @@ const UpdateBrand = () => {
                     htmlFor="position"
                     className="text-xl font-normal text-black"
                   >
-                    position
+                    {t("position")}
                   </label>
                   <span>
                     <input
@@ -117,7 +116,7 @@ const UpdateBrand = () => {
                       type="text"
                       name="position"
                       id="position"
-                      placeholder="Enter position"
+                      placeholder={t("position")}
                     />
                   </span>
                 </div>
@@ -128,7 +127,7 @@ const UpdateBrand = () => {
                     htmlFor="category"
                     className="text-xl font-normal text-black"
                   >
-                    Email
+                    {t("email")}
                   </label>
                   <span>
                     <input
@@ -138,7 +137,7 @@ const UpdateBrand = () => {
                       type="email"
                       name="email"
                       id="email"
-                      placeholder="Enter email"
+                      placeholder={t("email")}
                     />
                   </span>
                 </div>
@@ -148,7 +147,7 @@ const UpdateBrand = () => {
                     htmlFor="condition"
                     className="text-xl font-normal text-black"
                   >
-                    Phone
+                    {t("phone")}
                   </label>
                   <span>
                     <input
@@ -158,7 +157,7 @@ const UpdateBrand = () => {
                       onChange={handleChange}
                       required
                       name="phone"
-                      placeholder="Enter phone"
+                      placeholder={t("phone")}
                     />
                   </span>
                 </div>
@@ -167,7 +166,7 @@ const UpdateBrand = () => {
                     htmlFor="description"
                     className="text-xl font-normal text-black"
                   >
-                    Message
+                    {t("message")}
                   </label>
                   <span>
                     <input
@@ -177,7 +176,7 @@ const UpdateBrand = () => {
                       onChange={handleChange}
                       required
                       name="message"
-                      placeholder="Enter message"
+                      placeholder={t("message")}
                     />
                   </span>
                 </div>
@@ -203,10 +202,10 @@ const UpdateBrand = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

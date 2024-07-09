@@ -1,15 +1,15 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { FaUpload } from "react-icons/fa";
 import {
   useGetOneAdminQuery,
   useUpdateAdminMutation,
 } from "../../redux/rtk/features/auth/admin/authApi";
+import { useTranslation } from "react-i18next";
 
 const AdminSetting = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [updateAdmin, { data, isLoading, isError, isSuccess, error }] =
     useUpdateAdminMutation();
   const getAdmin = localStorage.getItem("admin");
@@ -83,7 +83,7 @@ const AdminSetting = () => {
     <>
       <section className={Style.warehouse}>
         <div className={Style.warehouseContainer}>
-          <h2>Update my info</h2>
+          <h2>{t("updateMyInfo")}</h2>
           <form onSubmit={handleSubmit}>
             <div className={Style.formBox}>
               <div className={Style.leftBox}>
@@ -92,7 +92,7 @@ const AdminSetting = () => {
                     htmlFor="firstname"
                     className="text-xl font-normal text-black"
                   >
-                    First Name
+                    {t("firstName")}
                   </label>
                   <span>
                     <input
@@ -100,7 +100,7 @@ const AdminSetting = () => {
                       value={firstname}
                       type="text"
                       name="firstname"
-                      placeholder="Enter first name"
+                      placeholder={t("firstName")}
                       id="firstname"
                       required
                     />
@@ -111,7 +111,7 @@ const AdminSetting = () => {
                     htmlFor="email"
                     className="text-xl font-normal text-black"
                   >
-                    Email
+                    {t("email")}
                   </label>
                   <span>
                     <input
@@ -119,7 +119,7 @@ const AdminSetting = () => {
                       value={email}
                       type="email"
                       name="email"
-                      placeholder="Enter email"
+                      placeholder={t("email")}
                       id="email"
                       required
                     />
@@ -131,7 +131,7 @@ const AdminSetting = () => {
                     htmlFor="upproduct"
                     className={`${Style.dropContainer} text-xl font-normal text-black`}
                   >
-                    Profile Picture
+                    {t("profilePicture")}
                   </label>
                   <span>
                     <FaUpload />
@@ -151,7 +151,7 @@ const AdminSetting = () => {
                     htmlFor="description"
                     className="text-xl font-normal text-black"
                   >
-                    Description
+                    {t("description")}
                   </label>
                   <span>
                     <input
@@ -159,7 +159,7 @@ const AdminSetting = () => {
                       id="description"
                       onChange={handleChange}
                       value={description}
-                      placeholder="Enter description"
+                      placeholder={t("description")}
                       type="text"
                     />
                   </span>
@@ -171,7 +171,7 @@ const AdminSetting = () => {
                     htmlFor="lastname"
                     className="text-xl font-normal text-black"
                   >
-                    Last Name
+                    {t("lastName")}
                   </label>
                   <span>
                     <input
@@ -179,7 +179,7 @@ const AdminSetting = () => {
                       value={lastname}
                       type="text"
                       name="lastname"
-                      placeholder="Enter last name"
+                      placeholder={t("lastName")}
                       id="lastname"
                       required
                     />
@@ -190,14 +190,14 @@ const AdminSetting = () => {
                     htmlFor="password"
                     className="text-xl font-normal text-black"
                   >
-                    Password
+                    {t("password")}
                   </label>
                   <span>
                     <input
                       onChange={(e) => handleChange(e)}
                       type="password"
                       name="password"
-                      placeholder="Enter password"
+                      placeholder={t("password")}
                       id="password"
                       required
                     />
@@ -208,7 +208,7 @@ const AdminSetting = () => {
                     htmlFor="phone"
                     className="text-xl font-normal text-black"
                   >
-                    Phone
+                    {t("phone")}
                   </label>
                   <span>
                     <input
@@ -216,7 +216,7 @@ const AdminSetting = () => {
                       value={phone}
                       type="tel"
                       name="phone"
-                      placeholder="Enter phone"
+                      placeholder={t("phone")}
                       id="phone"
                       required
                     />
@@ -228,7 +228,7 @@ const AdminSetting = () => {
                     htmlFor="Organization"
                     className="text-xl font-normal text-black"
                   >
-                    Organization
+                    {t("organization")}
                   </label>
                   <span>
                     <input
@@ -236,7 +236,7 @@ const AdminSetting = () => {
                       value={Organization}
                       type="text"
                       name="Organization"
-                      placeholder="Enter Organization"
+                      placeholder={t("organization")}
                       id="Organization"
                       required
                     />
@@ -264,10 +264,10 @@ const AdminSetting = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

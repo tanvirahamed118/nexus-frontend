@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 function Posts() {
+  const { t } = useTranslation();
   return (
     <div className="">
       <p className="text-[#555] font-normal text-lg text-center pt-10">
-        You have not created any posts.
+        {t("notPostCreate")}
       </p>
     </div>
   );

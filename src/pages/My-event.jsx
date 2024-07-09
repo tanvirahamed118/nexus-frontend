@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import MyEventFilter from "../component/My-event-filter";
 import { useSelector } from "react-redux";
 import { useGetAllApplyQuery } from "../redux/rtk/features/apply/applyApi";
+import { useTranslation } from "react-i18next";
 
 function MyEvent() {
+  const { t } = useTranslation();
   const { data } = useGetAllApplyQuery();
   const user = localStorage.getItem("user");
   const userAuth = JSON.parse(user);
@@ -29,7 +31,7 @@ function MyEvent() {
       <div className="container">
         <div className="flex items-center justify-between pb-10">
           <h2 className="lg:text-5xl text-black font-bold capitalize">
-            My Requests
+            {t("myRequest")}
           </h2>
           <MyEventFilter />
         </div>
@@ -37,19 +39,19 @@ function MyEvent() {
           <table className="border-collapse w-full bg-white border border-gray-200">
             <tr>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Event Image
+                {t("eventImage")}
               </th>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Event
+                {t("events")}
               </th>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Date/Time
+                {t("dateAndTime")}
               </th>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Status
+                {t("status")}
               </th>
               <th className="border border-[#dddddd] text-left px-5 py-3 text-base text-black font-bold">
-                Action
+                {t("action")}
               </th>
             </tr>
             {data?.filter(filterByCategory)?.map((item) => {
@@ -92,7 +94,8 @@ function MyEvent() {
                       to={`/event/${eventID}`}
                       className="text-white bg-[#c3a86e] hover:bg-[#c89549] py-1.5 block w-24 text-center rounded-md text-base font-normal"
                     >
-                      View <i className="fa-solid fa-right-long pl-2"></i>
+                      {t("view")}{" "}
+                      <i className="fa-solid fa-right-long pl-2"></i>
                     </Link>
                   </td>
                 </tr>

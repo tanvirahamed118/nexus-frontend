@@ -7,8 +7,10 @@ import {
   useDeleteContactMutation,
   useGetAllContactQuery,
 } from "../../redux/rtk/features/contact/contactApi";
+import { useTranslation } from "react-i18next";
 
 const DashboardEmails = () => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPages, setPostPages] = useState(10);
   const [loadingEventId, setLoadingEventId] = useState(null);
@@ -38,23 +40,23 @@ const DashboardEmails = () => {
     <>
       <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-          <h1>Email Lists</h1>
+          <h1>{t("emailLists")}</h1>
           <div className={Style.upcTable}>
             <table>
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Date</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Messages</th>
-                  <th>Actions</th>
+                  <th>{t("eventDashNo")}</th>
+                  <th>{t("date")}</th>
+                  <th>{t("name")}</th>
+                  <th>{t("email")}</th>
+                  <th>{t("message")}</th>
+                  <th>{t("action")}</th>
                 </tr>
               </thead>
               <tbody>
                 {slicePost?.length === 0 && (
                   <p className="text-red-500 font-bold text-md p-5">
-                    No data found!
+                    {t("noDataFound")}
                   </p>
                 )}
                 {slicePost
@@ -116,7 +118,7 @@ const DashboardEmails = () => {
                         </tr>
                       );
                     })
-                  : "Loading..."}
+                  : `${t("loading")}...`}
               </tbody>
             </table>
           </div>

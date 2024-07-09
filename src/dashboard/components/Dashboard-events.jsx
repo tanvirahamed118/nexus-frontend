@@ -7,8 +7,10 @@ import {
   useGetAllEventQuery,
 } from "../../redux/rtk/features/event/eventApi";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const DashboardEvents = () => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPages, setPostPages] = useState(8);
   const [loadingEventId, setLoadingEventId] = useState(null);
@@ -22,8 +24,9 @@ const DashboardEvents = () => {
   const firstIndex = lastIndex - postPages;
   const slicePost = data?.slice(firstIndex, lastIndex);
   const handledelete = (id) => {
-    setLoadingEventId(id);
     deleteEvent(id);
+    // setLoadingEventId(id);
+    console.log(id);
   };
   useEffect(() => {
     if (isError) {
@@ -38,24 +41,24 @@ const DashboardEvents = () => {
     <>
       <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-          <h1>Event Lists</h1>
+          <h1>{t("dashEventList")}</h1>
           <div className={Style.upcTable}>
             <table>
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Thumbnail</th>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Poster</th>
-                  <th>Actions</th>
+                  <th>{t("eventDashNo")}</th>
+                  <th>{t("eventDashThumbnail")}</th>
+                  <th>{t("eventDashDate")}</th>
+                  <th>{t("eventDashTitle")}</th>
+                  <th>{t("eventDashCategory")}</th>
+                  <th>{t("eventDashPoster")}</th>
+                  <th>{t("eventDashActions")}</th>
                 </tr>
               </thead>
               <tbody>
                 {slicePost?.length === 0 && (
                   <p className="text-red-500 font-bold text-md p-5">
-                    No data found!
+                    {t("noDataFound")}
                   </p>
                 )}
                 {slicePost
@@ -122,7 +125,7 @@ const DashboardEvents = () => {
                         </tr>
                       );
                     })
-                  : "Loading..."}
+                  : `${t("loading")}...`}
               </tbody>
             </table>
           </div>

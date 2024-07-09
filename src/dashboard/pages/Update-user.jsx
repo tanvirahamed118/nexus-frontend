@@ -1,15 +1,15 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
   useGetOneUserQuery,
   useUpdateUserStatusMutation,
 } from "../../redux/rtk/features/auth/user/authApi";
+import { useTranslation } from "react-i18next";
 
 const UpdateUser = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [updateUserStatus, { data, isLoading, isError, isSuccess, error }] =
     useUpdateUserStatusMutation();
   const params = useParams();
@@ -39,7 +39,7 @@ const UpdateUser = () => {
     <>
       <section className={Style.warehouse}>
         <div className={`${Style.warehouseContainer} !w-[500px]`}>
-          <h2>Update User Status</h2>
+          <h2>{t("updateUserStatus")}</h2>
           <form onSubmit={handleSubmit}>
             <div className="w-full">
               <div className={Style.formField}>
@@ -47,7 +47,7 @@ const UpdateUser = () => {
                   htmlFor="category"
                   className="text-xl font-normal text-black"
                 >
-                  Status
+                  {t("status")}
                 </label>
                 <span>
                   <select
@@ -57,8 +57,8 @@ const UpdateUser = () => {
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                   >
-                    <option value="pending">Pending</option>
-                    <option value="approved">Approved</option>
+                    <option value="pending">{t("pending")}</option>
+                    <option value="approved">{t("approved")}</option>
                   </select>
                 </span>
               </div>
@@ -83,10 +83,10 @@ const UpdateUser = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

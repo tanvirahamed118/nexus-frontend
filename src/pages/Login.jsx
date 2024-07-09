@@ -3,7 +3,10 @@ import Banner from "../assets/login-image-scaled.jpg";
 import { useLoginUserMutation } from "../redux/rtk/features/auth/user/authApi";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 function Login() {
+  const { t } = useTranslation();
   const [loginUser, { data, isLoading, isError, isSuccess, error }] =
     useLoginUserMutation();
   const [user, setUser] = useState({
@@ -48,11 +51,13 @@ function Login() {
           />
         </div>
         <div className="w-full md:w-6/12 px-5 md:px-20 flex flex-col justify-center py-10 md:py-0">
-          <h2 className="text-black text-3xl font-bold uppercase">LOGIN</h2>
+          <h2 className="text-black text-3xl font-bold uppercase">
+            {t("login")}
+          </h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-5 py-5">
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Username or E-mail
+                {t("userName")} or {t("email")}
               </label>
               <input
                 type="text"
@@ -60,11 +65,12 @@ function Login() {
                 className="border border-gray-300 px-5 py-3 rounded-md"
                 onChange={(e) => handleChange(e)}
                 value={info}
+                placeholder={t("userName") + ` or ` + t("email")}
               />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Password
+                {t("password")}
               </label>
               <input
                 type="password"
@@ -72,6 +78,7 @@ function Login() {
                 className="border border-gray-300 px-5 py-3 rounded-md"
                 onChange={(e) => handleChange(e)}
                 value={password}
+                placeholder={t("password")}
               />
             </div>
             <div className="flex gap-2 items-center">
@@ -80,7 +87,7 @@ function Login() {
                 htmlFor="check"
                 className="text-lg text-[#888] font-normal"
               >
-                Keep me signed in
+                {t("keepMeLogin")}
               </label>
             </div>
             <div className="flex gap-5">
@@ -104,17 +111,17 @@ function Login() {
                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                       />
                     </svg>
-                    <p>Loading</p>
+                    <p>{t("loading")}</p>
                   </>
                 ) : (
-                  "Login"
+                  t("login")
                 )}
               </button>
               <Link
                 to="/register"
                 className="bg-[#d69c61] text-base font-bold uppercase text-white rounded-md w-full py-4 text-center hover:bg-[#D09460]"
               >
-                Register
+                {t("register")}
               </Link>
             </div>
             <div className="w-full">
@@ -122,7 +129,7 @@ function Login() {
                 to="/reset"
                 className="text-lg text-[#888] font-normal text-center block hover:underline"
               >
-                Forgot your password?
+                {t("forgotYourPassword")}
               </Link>
             </div>
           </form>

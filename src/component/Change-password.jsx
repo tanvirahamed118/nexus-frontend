@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useUpdateUserPassMutation } from "../redux/rtk/features/auth/user/authApi";
 import toast, { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 
 function ChangePassword() {
   const userAuth = localStorage.getItem("user");
+  const { t } = useTranslation();
   const userInfo = JSON.parse(userAuth);
   const id = userInfo?.user?._id;
   const [updateUserPass, { data, isLoading, isError, isSuccess, error }] =
@@ -48,13 +50,13 @@ function ChangePassword() {
       <span className="flex gap-2 items-center">
         <i className="fa-solid fa-gear text-[#444] text-lg"></i>
         <p className="text-black text-xl font-normal capitalize">
-          Change password
+          {t("changePassword")}
         </p>
       </span>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 py-5">
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Current Password *
+            {t("currentPassword")} *
           </label>
           <input
             type="password"
@@ -66,7 +68,7 @@ function ChangePassword() {
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            New Password *
+            {t("newPassword")} *
           </label>
           <input
             type="password"
@@ -78,7 +80,7 @@ function ChangePassword() {
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Confirm Password *
+            {t("confirmPassword")} *
           </label>
           <input
             type="password"
@@ -90,7 +92,7 @@ function ChangePassword() {
         </div>
         <button
           type="submit"
-          className="bg-[#d2b588] text-white font-normal text-base px-5 py-2 rounded-md w-40 flex justify-center items-center gap-2"
+          className="bg-[#d2b588] text-white font-normal text-base px-5 py-2 rounded-md w-44 flex justify-center items-center gap-2"
         >
           {isLoading ? (
             <>
@@ -108,10 +110,10 @@ function ChangePassword() {
                   d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                 />
               </svg>
-              <p>Loading</p>
+              <p>{t("loading")}</p>
             </>
           ) : (
-            "Update Password"
+            t("updatePassword")
           )}
         </button>
       </form>

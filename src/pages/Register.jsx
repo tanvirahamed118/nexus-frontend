@@ -4,7 +4,10 @@ import countryList from "react-select-country-list";
 import Select from "react-select";
 import { useRegisterUserMutation } from "../redux/rtk/features/auth/user/authApi";
 import toast, { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+
 function Register() {
+  const { t } = useTranslation();
   const [registerUser, { data, isLoading, isError, isSuccess, error }] =
     useRegisterUserMutation();
   const [user, setUser] = useState({
@@ -115,19 +118,19 @@ function Register() {
         </div>
         <div className="w-full lg:w-6/12 p-10 lg:p-14 flex flex-col justify-center">
           <h2 className="text-black text-2xl lg:text-3xl font-bold uppercase">
-            BECOME ONE OF OUR INFLUENCERS
+            {t("becomeInfluencer")}
           </h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-5 py-5">
             <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  First Name*
+                  {t("firstName")}*
                 </label>
                 <input
                   type="text"
                   name="firstname"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                  placeholder="First name"
+                  placeholder={t("firstName")}
                   onChange={(e) => handleChange(e)}
                   value={firstname}
                   required
@@ -135,13 +138,13 @@ function Register() {
               </div>
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  Last Name*
+                  {t("lastName")}*
                 </label>
                 <input
                   type="text"
                   name="lastname"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                  placeholder="Last name"
+                  placeholder={t("lastName")}
                   onChange={(e) => handleChange(e)}
                   value={lastname}
                   required
@@ -150,13 +153,13 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Username*
+                {t("userName")}*
               </label>
               <input
                 type="text"
                 name="username"
                 className="border border-gray-300 px-5 py-3 rounded-md"
-                placeholder="Enter your username"
+                placeholder={t("userName")}
                 onChange={(e) => handleChange(e)}
                 value={username}
                 required
@@ -164,7 +167,7 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                <i className="fa-solid fa-image"></i> Profile Picture*
+                <i className="fa-solid fa-image"></i> {t("profilePicture")}*
               </label>
               <span className="border border-dashed border-gray-200 w-full h-32 flex justify-center items-center rounded-md">
                 <input
@@ -179,13 +182,13 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Email Address*
+                {t("emailAddress")}*
               </label>
               <input
                 type="email"
                 name="email"
                 className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                placeholder="Enter your email address"
+                placeholder={t("emailAddress")}
                 onChange={(e) => handleChange(e)}
                 value={email}
                 required
@@ -193,13 +196,13 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Phone Number*
+                {t("phoneNumber")}*
               </label>
               <input
                 type="tel"
                 name="phone"
                 className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                placeholder="Phone Number"
+                placeholder={t("phoneNumber")}
                 onChange={(e) => handleChange(e)}
                 value={phone}
                 required
@@ -207,7 +210,7 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Country of residence *
+                {t("countryOfResidence")} *
               </label>
               <Select
                 name="country"
@@ -221,13 +224,13 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Password*
+                {t("password")}*
               </label>
               <input
                 type="password"
                 name="password"
                 className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                placeholder="Enter a password"
+                placeholder={t("password")}
                 onChange={(e) => handleChange(e)}
                 value={password}
                 required
@@ -235,12 +238,12 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Confirm Password*
+                {t("confirmPassword")}*
               </label>
               <input
                 type="password"
                 className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                placeholder="Confirm password"
+                placeholder={t("confirmPassword")}
                 onChange={(e) => setConfirmPass(e.target.value)}
                 required
                 value={confirmPass}
@@ -249,13 +252,13 @@ function Register() {
             <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  Instagram*
+                  {t("instagram")}*
                 </label>
                 <input
                   type="text"
                   name="instagram"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                  placeholder="@yourusername"
+                  placeholder={`@` + t("yourName")}
                   onChange={(e) => handleChange(e)}
                   value={instagram}
                   required
@@ -263,13 +266,13 @@ function Register() {
               </div>
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  Tiktok
+                  {t("tiktok")}
                 </label>
                 <input
                   type="text"
                   name="tiktok"
                   className="border border-gray-300 px-5 py-3 rounded-md text-black text-base font-normal"
-                  placeholder="@yourusername"
+                  placeholder={`@` + t("yourName")}
                   onChange={(e) => handleChange(e)}
                   value={tiktok}
                 />
@@ -278,7 +281,7 @@ function Register() {
             <div className="flex md:flex-row flex-col gap-5 w-full">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  YouTube
+                  {t("youtube")}
                 </label>
                 <input
                   type="text"
@@ -291,7 +294,7 @@ function Register() {
               </div>
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="" className="text-lg text-black font-bold">
-                  Snapchat
+                  {t("snapchat")}
                 </label>
                 <input
                   type="text"
@@ -305,7 +308,7 @@ function Register() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                Facebook
+                {t("facebook")}
               </label>
               <input
                 type="text"
@@ -319,8 +322,8 @@ function Register() {
 
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg text-black font-bold">
-                <i className="fa-solid fa-chart-line"></i> Instagram Statistics
-                video*
+                <i className="fa-solid fa-chart-line"></i>{" "}
+                {t("InstagramStatisticsVideo")}*
               </label>
               <span className="border border-dashed border-gray-200 w-full h-32 flex justify-center items-center rounded-md">
                 <input
@@ -348,8 +351,7 @@ function Register() {
                 htmlFor="check"
                 className="text-lg text-[#888] font-normal"
               >
-                Please confirm that you agree with
-                <a href="">Terms & Conditions</a> of this platform
+                {t("pleaseConfirm")}
               </label>
             </div>
 
@@ -373,10 +375,10 @@ function Register() {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading</p>
+                  <p>{t("loading")}</p>
                 </>
               ) : (
-                "register"
+                t("register")
               )}
             </button>
           </form>

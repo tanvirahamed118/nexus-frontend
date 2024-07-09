@@ -5,15 +5,18 @@ import Loading from "../component/Loading";
 import Filter from "../component/Filter";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 function Events() {
   const { data, isLoading, isError, error } = useGetAllEventQuery();
+  const { t } = useTranslation();
   const { category } = useSelector((state) => state.category);
   const user = localStorage.getItem("user");
   const userAuth = JSON.parse(user);
   const [loadMore, setLoadMore] = useState(6);
   const slicePost = data?.slice(0, loadMore);
   const navigate = useNavigate();
+
   const loadMorePost = () => {
     setLoadMore(loadMore + 4);
   };
@@ -49,7 +52,7 @@ function Events() {
   }
   if (!isLoading && !isError && data?.length === 0) {
     content = (
-      <p className="text-xl text-red-500 font-normal">Event Not Found!</p>
+      <p className="text-xl text-red-500 font-normal">{t("eventNotFound")}</p>
     );
   }
   if (!isLoading && !isError && data?.length > 0) {
@@ -105,7 +108,7 @@ function Events() {
               onClick={loadMorePost}
               className="bg-[#976d44] py-2 px-5 hover:px-10 transition-all rounded-md text-white font-bold text-base hover:bg-[#ec9f52]"
             >
-              Load More
+              {t("loadMore")}
             </button>
           )}
         </div>

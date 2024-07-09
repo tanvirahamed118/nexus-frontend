@@ -2,9 +2,11 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import Avater from "../assets/default_avatar.jpg";
 import { useGetOneUserQuery } from "../redux/rtk/features/auth/user/authApi";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function UserProfile() {
   const userAuth = localStorage.getItem("user");
+  const { t } = useTranslation();
   const user = JSON.parse(userAuth);
   const id = user?.user?._id;
   const { data } = useGetOneUserQuery(id);
@@ -35,7 +37,7 @@ function UserProfile() {
             <Link to="/account" className="flex gap-2 items-center ">
               <i className="fa-solid fa-gear text-[#aaa] text-xl hover:text-[#4169e1]"></i>
               <p className="text-[#555] text-lg font-bold hover:underline">
-                Profile Settings{" "}
+                {t("profileSetting")}{" "}
               </p>
             </Link>
           </div>
@@ -91,7 +93,7 @@ function UserProfile() {
                   className="text-white text-base font-bold"
                 >
                   <i className="fa-solid fa-user pr-2"></i>
-                  About
+                  {t("about")}
                 </Link>
               </li>
               <li className="bg-[#D2B588] hover:bg-[#977c53] py-2 px-3 rounded-md text-white flex gap-2 items-center">
@@ -101,7 +103,7 @@ function UserProfile() {
                 >
                   {" "}
                   <i className="fa-solid fa-pencil pr-2"></i>
-                  Posts
+                  {t("posts")}
                 </Link>
               </li>
             </ul>

@@ -7,8 +7,10 @@ import {
   useDeleteApplyMutation,
   useGetAllApplyQuery,
 } from "../../redux/rtk/features/apply/applyApi";
+import { useTranslation } from "react-i18next";
 
 const DashboardSubmissions = () => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPages, setPostPages] = useState(8);
   const [loadingEventId, setLoadingEventId] = useState(null);
@@ -38,25 +40,25 @@ const DashboardSubmissions = () => {
     <>
       <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-          <h1>Submissions Lists</h1>
+          <h1>{t("submissionsLists")}</h1>
           <div className={Style.upcTable}>
             <table>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Event Image</th>
-                  <th>Event Title</th>
-                  <th>Submit Date</th>
-                  <th>Submit Time</th>
-                  <th>Submit Message</th>
-                  <th>Submit Status</th>
-                  <th>Actions</th>
+                  <th>{`${t("events")} ${t("eventDashDate")}`}</th>
+                  <th>{`${t("events")} ${t("eventDashThumbnail")}`}</th>
+                  <th>{`${t("events")} ${t("eventDashTitle")}`}</th>
+                  <th>{t("submitDate")}</th>
+                  <th>{t("submitTime")}</th>
+                  <th>{t("submitMessage")}</th>
+                  <th>{t("submitStatus")}</th>
+                  <th>{t("eventDashActions")}</th>
                 </tr>
               </thead>
               <tbody>
                 {slicePost?.length === 0 && (
                   <p className="text-red-500 font-bold text-md p-5">
-                    No data found!
+                    {t("noDataFound")}
                   </p>
                 )}
                 {slicePost
@@ -146,7 +148,7 @@ const DashboardSubmissions = () => {
                         </tr>
                       );
                     })
-                  : "Loading..."}
+                  : `${t("loading")}...`}
               </tbody>
             </table>
           </div>

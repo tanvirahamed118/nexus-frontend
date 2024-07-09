@@ -7,8 +7,10 @@ import {
   useDeleteBrandMutation,
   useGetAllBrandQuery,
 } from "../../redux/rtk/features/brand/brandSlice";
+import { useTranslation } from "react-i18next";
 
 const DashboardBrands = () => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPages, setPostPages] = useState(8);
   const [loadingEventId, setLoadingEventId] = useState(null);
@@ -38,25 +40,25 @@ const DashboardBrands = () => {
     <>
       <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-          <h1>Brand Lists</h1>
+          <h1>{t("brandList")}</h1>
           <div className={Style.upcTable}>
             <table>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Name Of EST</th>
-                  <th>RP Person Name</th>
-                  <th>Postition</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Message</th>
-                  <th>Actions</th>
+                  <th>{t("date")}</th>
+                  <th>{t("nameOfEst")}</th>
+                  <th>{t("rPPersonName")}</th>
+                  <th>{t("position")}</th>
+                  <th>{t("email")}</th>
+                  <th>{t("phone")}</th>
+                  <th>{t("message")}</th>
+                  <th>{t("action")}</th>
                 </tr>
               </thead>
               <tbody>
                 {slicePost?.length === 0 && (
                   <p className="text-red-500 font-bold text-md p-5">
-                    No data found!
+                    {t("noDataFound")}
                   </p>
                 )}
                 {slicePost
@@ -119,7 +121,7 @@ const DashboardBrands = () => {
                         </tr>
                       );
                     })
-                  : "Loading..."}
+                  : `${t("loading")}...`}
               </tbody>
             </table>
           </div>

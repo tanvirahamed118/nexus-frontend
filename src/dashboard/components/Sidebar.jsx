@@ -11,7 +11,10 @@ import {
   FaCloudUploadAlt,
   FaClipboardList,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+
 const Sidebar = () => {
+  const { t } = useTranslation();
   return (
     <div className={Style.dashboardNav}>
       <div className={Style.dashboardLogo}>
@@ -22,38 +25,38 @@ const Sidebar = () => {
       <ul>
         <li>
           <FaThLarge />
-          <Link to="/dashboard/events">Events</Link>
+          <Link to="/dashboard/events">{t("events")}</Link>
         </li>
 
         <li>
           <FaRegCalendarPlus />
-          <Link to="/dashboard/create">Create Event</Link>
+          <Link to="/dashboard/create">{t("createEvent")}</Link>
         </li>
         <li>
           <FaCloudUploadAlt />
-          <Link to="/dashboard/submissions">Submissions</Link>
+          <Link to="/dashboard/submissions">{t("submissions")}</Link>
         </li>
         <li>
           <FaClipboardList />
-          <Link to="/dashboard/brands">Brands</Link>
+          <Link to="/dashboard/brands">{t("brands")}</Link>
         </li>
         <li>
           <FaUserFriends />
-          <Link to="/dashboard/users">Users</Link>
+          <Link to="/dashboard/users">{t("users")}</Link>
         </li>
         <li>
           <FaEnvelope />
-          <Link to="/dashboard/emails">Emails</Link>
+          <Link to="/dashboard/emails">{t("emails")}</Link>
         </li>
 
         <li>
           <FaUserCircle />
-          <Link to="/dashboard/profile">Profile</Link>
+          <Link to="/dashboard/profile">{t("profile")}</Link>
         </li>
 
         <li>
           <FaCog />
-          <Link to="/dashboard/setting">Setting</Link>
+          <Link to="/dashboard/setting">{t("setting")}</Link>
         </li>
       </ul>
     </div>

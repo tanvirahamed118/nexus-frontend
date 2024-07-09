@@ -1,16 +1,16 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { FaUpload } from "react-icons/fa";
 import {
   useGetOneEventQuery,
   useUpdateEventMutation,
 } from "../../redux/rtk/features/event/eventApi";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const UpdateEvent = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [createEvent, { data, isLoading, isError, isSuccess, error }] =
     useUpdateEventMutation();
   const params = useParams();
@@ -94,7 +94,7 @@ const UpdateEvent = () => {
     <>
       <section className={Style.warehouse}>
         <div className={Style.warehouseContainer}>
-          <h2>Update Event info</h2>
+          <h2>{t("updateEventInfo")}</h2>
           <form onSubmit={handleSubmit}>
             <div className={Style.formBox}>
               <div className={Style.leftBox}>
@@ -103,7 +103,7 @@ const UpdateEvent = () => {
                     htmlFor="trackingNumber"
                     className="text-xl font-normal text-black"
                   >
-                    Title
+                    {t("eventDashTitle")}
                   </label>
                   <span>
                     <input
@@ -111,7 +111,7 @@ const UpdateEvent = () => {
                       value={title}
                       type="text"
                       name="title"
-                      placeholder="Enter title"
+                      placeholder={t("eventDashTitle")}
                       id="trackingNumber"
                       required
                     />
@@ -123,7 +123,7 @@ const UpdateEvent = () => {
                     htmlFor="upproduct"
                     className={`${Style.dropContainer} text-xl font-normal text-black`}
                   >
-                    Event Thumbnail
+                    {t("eventThumnail")}
                   </label>
                   <span>
                     <FaUpload />
@@ -144,7 +144,7 @@ const UpdateEvent = () => {
                     htmlFor="location"
                     className="text-xl font-normal text-black"
                   >
-                    Location
+                    {t("location")}
                   </label>
                   <span>
                     <input
@@ -154,7 +154,7 @@ const UpdateEvent = () => {
                       type="text"
                       name="location"
                       id="location"
-                      placeholder="Enter location"
+                      placeholder={t("location")}
                     />
                   </span>
                 </div>
@@ -163,7 +163,7 @@ const UpdateEvent = () => {
                     htmlFor="upc"
                     className="text-xl font-normal text-black"
                   >
-                    Requirement
+                    {t("requirements")}
                   </label>
                   <span>
                     <textarea
@@ -171,7 +171,7 @@ const UpdateEvent = () => {
                       id="requirement"
                       onChange={handleChange}
                       value={requirement}
-                      placeholder="Enter requirements"
+                      placeholder={t("requirements")}
                       rows={3}
                     ></textarea>
                   </span>
@@ -183,7 +183,7 @@ const UpdateEvent = () => {
                     htmlFor="category"
                     className="text-xl font-normal text-black"
                   >
-                    Category
+                    {t("eventDashCategory")}
                   </label>
                   <span>
                     <select
@@ -194,24 +194,24 @@ const UpdateEvent = () => {
                       onChange={(e) => handleChange(e)}
                     >
                       <option value="" selected disabled>
-                        Select One
+                        {t("selectOne")}
                       </option>
                       <option value="Food and beverage">
-                        Food and beverage
+                        {t("foodBeverage")}
                       </option>
                       <option value="Fashion and Apparel">
-                        Fashion and Apparel
+                        {t("fashionApparel")}
                       </option>
                       <option value="Health and Fitness">
-                        Health and Fitness
+                        {t("healthFitness")}
                       </option>
                       <option value="Entertainment and Media">
-                        Entertainment and Media
+                        {t("entertainmentMedia")}
                       </option>
                       <option value="Hotels and Villas">
-                        Hotels and Villas
+                        {t("hotelsVillas")}
                       </option>
-                      <option value="Products">Products</option>
+                      <option value="Products">{t("products")}</option>
                     </select>
                   </span>
                 </div>
@@ -221,7 +221,7 @@ const UpdateEvent = () => {
                     htmlFor="star"
                     className="text-xl font-normal text-black"
                   >
-                    Rating
+                    {t("rating")}
                   </label>
                   <span>
                     <select
@@ -232,7 +232,7 @@ const UpdateEvent = () => {
                       onChange={(e) => handleChange(e)}
                     >
                       <option value="" selected disabled>
-                        Select One
+                        {t("selectOne")}
                       </option>
                       <option value="*">1</option>
                       <option value="**">2</option>
@@ -248,7 +248,7 @@ const UpdateEvent = () => {
                     htmlFor="condition"
                     className="text-xl font-normal text-black"
                   >
-                    Condition
+                    {t("condition")}
                   </label>
                   <span>
                     <input
@@ -258,7 +258,7 @@ const UpdateEvent = () => {
                       onChange={handleChange}
                       required
                       name="condition"
-                      placeholder="Enter conditions"
+                      placeholder={t("condition")}
                     />
                   </span>
                 </div>
@@ -267,7 +267,7 @@ const UpdateEvent = () => {
                     htmlFor="description"
                     className="text-xl font-normal text-black"
                   >
-                    Description
+                    {t("description")}
                   </label>
                   <span>
                     <textarea
@@ -275,7 +275,7 @@ const UpdateEvent = () => {
                       id="description"
                       onChange={handleChange}
                       value={description}
-                      placeholder="Enter description"
+                      placeholder={t("description")}
                       rows={3}
                     ></textarea>
                   </span>
@@ -302,10 +302,10 @@ const UpdateEvent = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

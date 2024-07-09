@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Banner from "../assets/pexels-jéshoots-4831-scaled.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import { useCreateContactMutation } from "../redux/rtk/features/contact/contactApi";
+import { useTranslation } from "react-i18next";
 
 function Contact() {
+  const { t } = useTranslation();
   const [createContact, { data, isLoading, isError, isSuccess, error }] =
     useCreateContactMutation();
 
@@ -46,10 +48,10 @@ function Contact() {
         </div>
         <div className="w-full md:w-6/12 flex flex-col p-14 justify-center">
           <h2 className="text-2xl font-bold text-black uppercase">
-            SEND US A MESSAGE
+            {t("sendUs")}
           </h2>
           <p className="text-black text-base font-normal">
-            Enter your details and we will get back to you soon
+            {t("enterYourDetail")}
           </p>
           <form
             onSubmit={handleSubmit}
@@ -58,7 +60,7 @@ function Contact() {
             <input
               type="text"
               name="name"
-              placeholder="name"
+              placeholder={t("name")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={name}
@@ -68,7 +70,7 @@ function Contact() {
               type="email"
               name="email"
               id=""
-              placeholder="email"
+              placeholder={t("email")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={email}
@@ -76,7 +78,7 @@ function Contact() {
             />
             <textarea
               name="messages"
-              placeholder="your message"
+              placeholder={t("yourMessahge")}
               id=""
               cols="30"
               rows="3"
@@ -105,10 +107,10 @@ function Contact() {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading</p>
+                  <p>{t("loading")}</p>
                 </>
               ) : (
-                "Send A Message"
+                t("sendMessage")
               )}
             </button>
           </form>

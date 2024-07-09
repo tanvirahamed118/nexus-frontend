@@ -1,15 +1,15 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
   useGetOneContactQuery,
   useUpdateContactMutation,
 } from "../../redux/rtk/features/contact/contactApi";
+import { useTranslation } from "react-i18next";
 
 const UpdateEmail = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [updateContact, { data, isLoading, isError, isSuccess, error }] =
     useUpdateContactMutation();
   const params = useParams();
@@ -53,7 +53,7 @@ const UpdateEmail = () => {
     <>
       <section className={Style.warehouse}>
         <div className={`${Style.warehouseContainer} !w-[500px]`}>
-          <h2>Update Email info</h2>
+          <h2>{t("updateEmailInfo")}</h2>
           <form onSubmit={handleSubmit}>
             <div className={"w-full"}>
               <div className={"w-full flex flex-col gap-5"}>
@@ -62,7 +62,7 @@ const UpdateEmail = () => {
                     htmlFor="trackingNumber"
                     className="text-xl font-normal text-black"
                   >
-                    Name
+                    {t("name")}
                   </label>
                   <span>
                     <input
@@ -70,7 +70,7 @@ const UpdateEmail = () => {
                       value={name}
                       type="text"
                       name="name"
-                      placeholder="Enter name"
+                      placeholder={t("name")}
                       id="trackingNumber"
                       required
                     />
@@ -81,7 +81,7 @@ const UpdateEmail = () => {
                     htmlFor="trackingNumber"
                     className="text-xl font-normal text-black"
                   >
-                    Email
+                    {t("email")}
                   </label>
                   <span>
                     <input
@@ -89,7 +89,7 @@ const UpdateEmail = () => {
                       value={email}
                       type="email"
                       name="email"
-                      placeholder="Enter email"
+                      placeholder={t("email")}
                       id="trackingNumber"
                       required
                     />
@@ -100,7 +100,7 @@ const UpdateEmail = () => {
                     htmlFor="messages"
                     className="text-xl font-normal text-black"
                   >
-                    Messages
+                    {t("message")}
                   </label>
                   <span>
                     <textarea
@@ -108,7 +108,7 @@ const UpdateEmail = () => {
                       id="messages"
                       onChange={handleChange}
                       value={messages}
-                      placeholder="Enter messages"
+                      placeholder={t("message")}
                       rows={3}
                     ></textarea>
                   </span>
@@ -135,10 +135,10 @@ const UpdateEmail = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

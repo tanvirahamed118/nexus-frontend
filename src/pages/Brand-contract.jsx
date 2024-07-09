@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { useCreateBrandMutation } from "../redux/rtk/features/brand/brandSlice";
 
 function BrandContract() {
+  const { t } = useTranslation();
   const [createBrand, { data, isLoading, isError, isSuccess, error }] =
     useCreateBrandMutation();
 
@@ -52,15 +53,15 @@ function BrandContract() {
         <div className="w-full md:w-6/12 bg-[#1D1D1D] h-screen flex flex-col items-end justify-center p-10">
           <div className="w-7/12">
             <h2 className="text-5xl text-white font-bold capitalize leading-snug">
-              Are you interested in <br />
-              knowing our offers ?
+              {t("areYouInterested")}
             </h2>
             <p className="text-white text-lg font-normal capitalize py-5">
-              Please, drop us a message and you will get our detailed <br />
-              offers in less than 24 hours
+              {t("dropUsMessage")}
             </p>
             <div>
-              <h3 className="text-white font-bold text-base">FOLLOW US :</h3>
+              <h3 className="text-white font-bold text-base">
+                {t("followUs")}:
+              </h3>
               <div className="flex gap-5 pt-3">
                 <Link to="">
                   <i className="fa-brands fa-facebook text-[#b6b6b6] text-xl hover:text-white"></i>
@@ -77,10 +78,10 @@ function BrandContract() {
         </div>
         <div className="w-full md:w-6/12 flex flex-col p-14 justify-center">
           <h2 className="text-2xl font-bold text-black uppercase">
-            FILL UP THE BELOW FORM
+            {t("fillTheForm")}
           </h2>
           <p className="text-black text-base font-normal">
-            Enter your details and we will get back to you soon
+            {t("enterDetails")}
           </p>
           <form
             onSubmit={handleSubmit}
@@ -89,7 +90,7 @@ function BrandContract() {
             <input
               type="text"
               name="nameOfEST"
-              placeholder="NAME OF THE ESTABLISHMENT:"
+              placeholder={t("nameOfEST")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={nameOfEST}
@@ -98,7 +99,7 @@ function BrandContract() {
             <input
               type="text"
               name="RPPersonName"
-              placeholder="REPRESENTATIVE PERSON NAME"
+              placeholder={t("represntative")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={RPPersonName}
@@ -107,7 +108,7 @@ function BrandContract() {
             <input
               type="text"
               name="position"
-              placeholder="POSITION"
+              placeholder={t("position")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={position}
@@ -118,7 +119,7 @@ function BrandContract() {
               type="email"
               name="email"
               id=""
-              placeholder="email"
+              placeholder={t("email")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={email}
@@ -127,7 +128,7 @@ function BrandContract() {
             <input
               type="tel"
               name="phone"
-              placeholder="Phone"
+              placeholder={t("phone")}
               className="capitalize border-2 rounded-md px-5 text-black text-xl font-normal py-3 border-gray-500"
               onChange={handleChange}
               value={phone}
@@ -135,7 +136,7 @@ function BrandContract() {
             />
             <textarea
               name="message"
-              placeholder="your message"
+              placeholder={t("yourMessage")}
               id=""
               cols="30"
               rows="3"
@@ -164,10 +165,10 @@ function BrandContract() {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading</p>
+                  <p>{t("loading")}</p>
                 </>
               ) : (
-                "Send A Message"
+                t("sendAMessage")
               )}
             </button>
           </form>

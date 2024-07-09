@@ -8,8 +8,10 @@ import {
   useDeleteApplyMutation,
   useGetAllApplyQuery,
 } from "../redux/rtk/features/apply/applyApi";
+import { useTranslation } from "react-i18next";
 
 function SingleEvent() {
+  const { t } = useTranslation();
   const params = useParams();
   const id = params.id;
   const { data } = useGetOneEventQuery(id);
@@ -57,7 +59,7 @@ function SingleEvent() {
             className="bg-white shadow-md rounded-md text-black flex gap-2 items-center text-base px-5 py-2 w-28"
           >
             <i className="fa-solid fa-arrow-left"></i>
-            <button>Back</button>
+            <button>{t("back")}</button>
           </Link>
         </div>
         <div className="flex gap-5 lg:flex-row flex-col">
@@ -111,7 +113,9 @@ function SingleEvent() {
             </div>
           </div>
           <div className="w-full lg:w-4/12 bg-white rounded-lg p-10 shadow-xl">
-            <h2 className="text-xl font-bold text-[#3a3a3a]">Conditions</h2>
+            <h2 className="text-xl font-bold text-[#3a3a3a]">
+              {t("condition")}
+            </h2>
             <ul className="flex flex-col gap-2 pt-2">
               <li className="flex gap-2 items-start">
                 <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
@@ -119,7 +123,7 @@ function SingleEvent() {
               </li>
             </ul>
             <h2 className="text-xl font-bold text-[#3a3a3a] pt-5">
-              Requirements
+              {t("requirements")}
             </h2>
             <ul className="flex flex-col gap-2 pt-2">
               <li className="flex gap-2 items-start">
@@ -134,7 +138,7 @@ function SingleEvent() {
                 className="bg-[#FDF3D8] text-[#947a3d] font-normal text-base py-3 px-5 rounded-md
                mt-5"
               >
-                You can submit requirements after atending it ({" "}
+                {t("youCanSubmit")} ({" "}
                 {`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}`}
                 )
               </p>
@@ -144,7 +148,7 @@ function SingleEvent() {
                 to="/login"
                 className="bg-[#cfa361] text-white text-base font-bold py-2 block text-center rounded-lg mt-5"
               >
-                Please Login to Apply
+                {t("pleaseLoginToApply")}
               </Link>
             )}
             {findSubmit?.length === 0 && user?.userToken && (
@@ -153,7 +157,7 @@ function SingleEvent() {
                 to=""
                 className="bg-[#cfa361] text-white text-base font-bold py-2 block text-center rounded-lg mt-5"
               >
-                Submit Requirements
+                {t("submitReq")}
               </Link>
             )}
             {findSubmit?.length === 1 && (
@@ -179,10 +183,10 @@ function SingleEvent() {
                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                       />
                     </svg>
-                    <p>Loading</p>
+                    <p>{t("loading")}</p>
                   </>
                 ) : (
-                  "Cancel Request?"
+                  ""
                 )}
               </button>
             )}
@@ -190,7 +194,7 @@ function SingleEvent() {
         </div>
         <div className="bg-white p-10 rounded-lg shadow-lg mt-10">
           <h2 className="text-xl font-bold text-[#3a3a3a] pb-3">
-            Description:
+            {t("description")}:
           </h2>
           <p className="text-black text-base font-normal pb-2">{description}</p>
         </div>

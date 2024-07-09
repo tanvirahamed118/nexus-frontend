@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo-white.png";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <>
       <section className="bg-black py-5 md:py-10">
@@ -18,7 +20,7 @@ function Footer() {
                   to="/faq"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  Faq
+                  {t("faq")}
                 </Link>
               </li>
               <li>
@@ -26,7 +28,7 @@ function Footer() {
                   to="/contact"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  contact us
+                  c{t("contactUs")}
                 </Link>
               </li>
               <li>
@@ -34,7 +36,7 @@ function Footer() {
                   to="/terms-condition"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  Terms & condition
+                  Terms & {t("terms")}
                 </Link>
               </li>
               <li>
@@ -42,7 +44,7 @@ function Footer() {
                   to="/privacy"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  privacy
+                  {t("privacy")}
                 </Link>
               </li>
               <li>
@@ -50,7 +52,7 @@ function Footer() {
                   to="/dashboard/login"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  Dashboard
+                  {t("dashboard")}
                 </Link>
               </li>
             </ul>
@@ -74,7 +76,7 @@ function Footer() {
       <footer className="bg-[#1A1B1D] py-5">
         <div className="container">
           <p className="text-sm text-white font-normal uppercase text-center">
-            © COPYRIGHT 2024 ALL RIGHT RESERVED (NEXUS)
+            {t("copyRightText")}
           </p>
         </div>
       </footer>

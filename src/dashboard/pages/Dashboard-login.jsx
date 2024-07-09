@@ -5,8 +5,10 @@ import toast, { Toaster } from "react-hot-toast";
 import { FaUser, FaLock } from "react-icons/fa";
 import Logo from "../../assets/Logo.png";
 import { useLoginAdminMutation } from "../../redux/rtk/features/auth/admin/authApi";
+import { useTranslation } from "react-i18next";
 
 const DashboardLogin = () => {
+  const { t } = useTranslation();
   const getAdmin = localStorage.getItem("admin");
   const adminAuth = JSON.parse(getAdmin);
   const { adminToken } = adminAuth || {};
@@ -54,7 +56,7 @@ const DashboardLogin = () => {
         <Link to="/" className={Style.logo}>
           <img src={Logo} alt="" />
         </Link>
-        <h2>Login Dashboard</h2>
+        <h2>{t("loginDash")}</h2>
         <form onSubmit={handleSubmit}>
           <span>
             <FaUser />
@@ -63,7 +65,7 @@ const DashboardLogin = () => {
               value={email}
               type="email"
               name="email"
-              placeholder="E-mail"
+              placeholder={t("email")}
               id="username"
               onChange={(e) => handleChange(e)}
             />
@@ -76,7 +78,7 @@ const DashboardLogin = () => {
               type="password"
               name="password"
               id="password"
-              placeholder="Password"
+              placeholder={t("password")}
               onChange={(e) => handleChange(e)}
             />
           </span>
@@ -100,10 +102,10 @@ const DashboardLogin = () => {
                     d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                   />
                 </svg>
-                <p>Loading...</p>
+                <p>{t("loading")}...</p>
               </>
             ) : (
-              "Login"
+              t("login")
             )}
           </button>
         </form>

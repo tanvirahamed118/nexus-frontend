@@ -2,9 +2,11 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import Avater from "../assets/default_avatar.jpg";
 import { useGetOneUserQuery } from "../redux/rtk/features/auth/user/authApi";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 function Account() {
   const userAuth = localStorage.getItem("user");
+  const { t } = useTranslation();
   const user = JSON.parse(userAuth);
   const id = user?.user?._id;
   const { data } = useGetOneUserQuery(id);
@@ -36,7 +38,7 @@ function Account() {
               to="/user-profile"
               className="text-[#44b0ec] text-base font-normal hover:underline capitalize"
             >
-              View Profile
+              {t("viewProfile")}
             </Link>
           </div>
           <div>
@@ -47,7 +49,7 @@ function Account() {
                   to="/account"
                   className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
                 >
-                  Account
+                  {t("account")}
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
@@ -57,7 +59,7 @@ function Account() {
                   to="/account/change-password"
                   className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
                 >
-                  Change Password
+                  {t("changePassword")}
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
@@ -67,7 +69,7 @@ function Account() {
                   to="/account/description"
                   className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
                 >
-                  Change Description
+                  {t("changeDescription")}
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
@@ -77,7 +79,7 @@ function Account() {
                   to="/account/privacy"
                   className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
                 >
-                  Privacy
+                  {t("privacy")}
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>
@@ -88,7 +90,7 @@ function Account() {
                   to="/account/delete"
                   className="text-left block w-full pl-3 py-2 text-black text-base font-bold capitalize"
                 >
-                  Delete Account
+                  {t("deleteAccount")}
                 </Link>
                 <i className="fa-solid fa-angle-right text-[#444] text-lg py-2 px-5 border-l border-gray-300"></i>
               </li>

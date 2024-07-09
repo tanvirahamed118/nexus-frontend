@@ -1,15 +1,15 @@
 import Style from "../../dashboard/styles/CreateEvent.module.css";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {
   useGetOneApplyQuery,
   useUpdateApplyMutation,
 } from "../../redux/rtk/features/apply/applyApi";
+import { useTranslation } from "react-i18next";
 
 const UpdateSubmission = () => {
-  // const navigate = useNavigate();
+  const { t } = useTranslation();
   const [updateApply, { data, isLoading, isError, isSuccess, error }] =
     useUpdateApplyMutation();
   const params = useParams();
@@ -55,7 +55,7 @@ const UpdateSubmission = () => {
     <>
       <section className={Style.warehouse}>
         <div className={Style.warehouseContainer}>
-          <h2>Update Submission info</h2>
+          <h2>{t("updateSubmissionInfo")}</h2>
           <form onSubmit={handleSubmit}>
             <div className={Style.formBox}>
               <div className={Style.leftBox}>
@@ -64,7 +64,7 @@ const UpdateSubmission = () => {
                     htmlFor="date"
                     className="text-xl font-normal text-black"
                   >
-                    Date
+                    {t("date")}
                   </label>
                   <span>
                     <input
@@ -72,7 +72,7 @@ const UpdateSubmission = () => {
                       value={date}
                       type="date"
                       name="date"
-                      placeholder="Enter date"
+                      placeholder={t("date")}
                       id="date"
                       required
                     />
@@ -84,7 +84,7 @@ const UpdateSubmission = () => {
                     htmlFor="time"
                     className="text-xl font-normal text-black"
                   >
-                    Time
+                    {t("time")}
                   </label>
                   <span>
                     <input
@@ -94,7 +94,7 @@ const UpdateSubmission = () => {
                       type="time"
                       name="time"
                       id="time"
-                      placeholder="Enter time"
+                      placeholder={t("time")}
                     />
                   </span>
                 </div>
@@ -105,7 +105,7 @@ const UpdateSubmission = () => {
                     htmlFor="status"
                     className="text-xl font-normal text-black"
                   >
-                    Status
+                    {t("status")}
                   </label>
                   <span>
                     <select
@@ -116,13 +116,13 @@ const UpdateSubmission = () => {
                       onChange={(e) => handleChange(e)}
                     >
                       <option value="" selected disabled>
-                        Select One
+                        {t("selectOne")}
                       </option>
-                      <option value="submitted">Submitted</option>
-                      <option value="need approval">Need Approval</option>
-                      <option value="canceled">Canceled</option>
+                      <option value="submitted">{t("submitted")}</option>
+                      <option value="need approval">{t("needApproval")}</option>
+                      <option value="canceled"></option>
                       <option value="require submission">
-                        require submission
+                        {t("requireSubmission")}
                       </option>
                     </select>
                   </span>
@@ -133,7 +133,7 @@ const UpdateSubmission = () => {
                     htmlFor="message"
                     className="text-xl font-normal text-black"
                   >
-                    Message
+                    {t("messahe")}
                   </label>
                   <span>
                     <input
@@ -143,7 +143,7 @@ const UpdateSubmission = () => {
                       onChange={handleChange}
                       required
                       name="message"
-                      placeholder="Enter conditions"
+                      placeholder={t("messahe")}
                     />
                   </span>
                 </div>
@@ -169,10 +169,10 @@ const UpdateSubmission = () => {
                       d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                     />
                   </svg>
-                  <p>Loading...</p>
+                  <p>{`${t("loading")}...`}</p>
                 </>
               ) : (
-                "Save Changes"
+                t("saveChanges")
               )}
             </button>
           </form>

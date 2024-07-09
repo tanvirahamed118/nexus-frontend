@@ -7,8 +7,10 @@ import {
   useDeleteUserByMutation,
   useGetAllUserQuery,
 } from "../../redux/rtk/features/auth/user/authApi";
+import { useTranslation } from "react-i18next";
 
 const DashboardUsers = () => {
+  const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [postPages, setPostPages] = useState(10);
   const [loadingEventId, setLoadingEventId] = useState(null);
@@ -38,25 +40,25 @@ const DashboardUsers = () => {
     <>
       <section className={Style.upcSection}>
         <div className={Style.upcContainer}>
-          <h1>User Lists</h1>
+          <h1>{t("userLists")}</h1>
           <div className={Style.upcTable}>
             <table>
               <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Profile</th>
-                  <th>Email</th>
-                  <th>Country</th>
-                  <th>Phone</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th>{t("firstName")}</th>
+                  <th>{t("lastName")}</th>
+                  <th>{t("profile")}</th>
+                  <th>{t("email")}</th>
+                  <th>{t("country")}</th>
+                  <th>{t("phone")}</th>
+                  <th>{t("status")}</th>
+                  <th>{t("action")}</th>
                 </tr>
               </thead>
               <tbody>
                 {slicePost?.length === 0 && (
                   <p className="text-red-500 font-bold text-md p-5">
-                    No data found!
+                    {t("noDataFound")}
                   </p>
                 )}
                 {slicePost
@@ -92,7 +94,7 @@ const DashboardUsers = () => {
                               className="text-white bg-[#5d4b41] hover:bg-[#695145] py-2 px-3 rounded-md flex gap-2 items-center"
                             >
                               <i className="fa-solid fa-pen-to-square"></i>
-                              <p>Update Status</p>
+                              <p>{t("updateStatus")}</p>
                             </Link>
                             <button
                               className="text-white bg-[#5d4b41] hover:bg-[#695145] py-2 px-3 rounded-md"
@@ -129,7 +131,7 @@ const DashboardUsers = () => {
                         </tr>
                       );
                     })
-                  : "Loading..."}
+                  : `${t("loading")}...`}
               </tbody>
             </table>
           </div>

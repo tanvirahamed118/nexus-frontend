@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useCreateApplyMutation } from "../redux/rtk/features/apply/applyApi";
+import { useTranslation } from "react-i18next";
 
 function SubmitEvent({ submit, setSubmit, data: getData }) {
+  const { t } = useTranslation();
   const eventID = getData?._id;
   const eventTitle = getData?.title;
   const [createApply, { data: resData, isLoading, isError, isSuccess, error }] =
@@ -75,13 +77,13 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
           <div className="flex gap-10">
             <div className="flex flex-col gap-2 w-full">
               <label htmlFor="" className="text-black text-md font-normal">
-                Event Date
+                {t("eventDate")}
               </label>
               <input
                 type="date"
                 name="date"
                 id=""
-                placeholder="Event Date"
+                placeholder={t("eventDate")}
                 className="uppercase border rounded-md px-5 text-black text-md font-normal py-3 border-gray-300"
                 value={date}
                 onChange={handleChange}
@@ -90,7 +92,7 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
             </div>
             <div className="flex flex-col gap-2 w-full">
               <label className="text-black text-md font-normal" htmlFor="">
-                Event Time
+                {t("eventTime")}
               </label>
               <select
                 name="time"
@@ -101,7 +103,7 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
                 required
               >
                 <option value="" selected disabled>
-                  Select Time
+                  {t("selectTime")}
                 </option>
                 <option value="10:00">10:00</option>
                 <option value="11:00">11:00</option>
@@ -112,11 +114,11 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
           </div>
           <div className="w-full pt-5 flex flex-col gap-2">
             <label htmlFor="" className="text-black text-md font-normal">
-              MEssages (Optional)
+              {t("eventMessage")}
             </label>
             <textarea
               name="message"
-              placeholder="your message"
+              placeholder={t("yourMessage")}
               id=""
               cols="30"
               rows="5"

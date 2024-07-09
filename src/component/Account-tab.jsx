@@ -4,9 +4,12 @@ import {
   useUpdateUserMutation,
 } from "../redux/rtk/features/auth/user/authApi";
 import toast, { Toaster } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+
 function AccountTab() {
   const [updateUser, { data, isLoading, isError, isSuccess, error }] =
     useUpdateUserMutation();
+  const { t } = useTranslation();
   const userAuth = localStorage.getItem("user");
   const userInfo = JSON.parse(userAuth);
   const id = userInfo?.user?._id;
@@ -56,17 +59,19 @@ function AccountTab() {
     <div>
       <span className="flex gap-2 items-center">
         <i className="fa-solid fa-user text-[#444] text-lg"></i>
-        <p className="text-black text-xl font-normal capitalize">Account</p>
+        <p className="text-black text-xl font-normal capitalize">
+          {t("account")}
+        </p>
       </span>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 py-5">
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Username *
+            {t("userName")} *
           </label>
           <input
             type="text"
             name="username"
-            placeholder="Adekami"
+            placeholder={t("userName")}
             className="text-base font-normal text-black border border-gray-300 p-3 rounded-md"
             onChange={(e) => handleChange(e)}
             value={username}
@@ -75,12 +80,12 @@ function AccountTab() {
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            First Name *
+            {t("firstName")} *
           </label>
           <input
             type="text"
             name="firstname"
-            placeholder="Arwin"
+            placeholder={t("firstName")}
             className="text-base font-normal text-black border border-gray-300 p-3 rounded-md"
             onChange={(e) => handleChange(e)}
             value={firstname}
@@ -89,12 +94,12 @@ function AccountTab() {
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            Last Name *
+            {t("lastName")} *
           </label>
           <input
             type="text"
             name="lastname"
-            placeholder="de Kam"
+            placeholder={t("lastName")}
             className="text-base font-normal text-black border border-gray-300 p-3 rounded-md"
             onChange={(e) => handleChange(e)}
             value={lastname}
@@ -103,7 +108,7 @@ function AccountTab() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="" className="text-lg text-black font-bold">
-            <i className="fa-solid fa-image"></i> Profile Picture*
+            <i className="fa-solid fa-image"></i> {t("profilePicture")}*
           </label>
           <span className="border border-dashed border-gray-200 w-full h-32 flex justify-center items-center rounded-md">
             <input
@@ -118,7 +123,8 @@ function AccountTab() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="" className="text-lg text-black font-bold">
-            <i className="fa-solid fa-image"></i> Instagram Statistics video*
+            <i className="fa-solid fa-image"></i>{" "}
+            {t("InstagramStatisticsVideo")}*
           </label>
           <span className="border border-dashed border-gray-200 w-full h-32 flex justify-center items-center rounded-md">
             <input
@@ -133,7 +139,7 @@ function AccountTab() {
         </div>
         <div className="flex flex-col gap-3">
           <label htmlFor="" className="text-lg text-black font-normal">
-            E-mail Address *
+            {t("emailAddress")} *
           </label>
           <input
             type="email"
@@ -165,10 +171,10 @@ function AccountTab() {
                   d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
                 />
               </svg>
-              <p>Loading</p>
+              <p>{t("loading")}</p>
             </>
           ) : (
-            "Update Account"
+            t("updateAccount")
           )}
         </button>
       </form>

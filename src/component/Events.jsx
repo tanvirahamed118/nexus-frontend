@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import Banner from "../assets/pexels-quark-studio-3201920-scaled.jpg";
 import { useGetAllEventQuery } from "../redux/rtk/features/event/eventApi";
+import { useTranslation } from "react-i18next";
+
 function Events() {
   const { data, isLoading, isError } = useGetAllEventQuery();
-
+  const { t } = useTranslation();
   // decide what to render
   let content;
   if (!isLoading && !isError && data?.length === 0) {
-    content = <p>Event Not Found!</p>;
+    content = <p>{t("eventNotFound")}</p>;
   }
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.slice(0, 8)?.map((item) => {
@@ -35,7 +37,7 @@ function Events() {
               to={`/event/${_id}`}
               className="border border-[#ff6161] px-5 py-1 md:px-10 md:py-2 rounded-full text-[#ff6161] text-sm font-bold uppercase hover:bg-[#ff6161] hover:text-white mt-1 md:text-base"
             >
-              Attend
+              {t("attend")}
             </Link>
           </div>
         </div>
