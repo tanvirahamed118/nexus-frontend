@@ -9,7 +9,8 @@
 }
 .warehouseContainer {
   width: 1000px;
-  height: auto;
+  height: 85vh;
+  overflow-y: scroll;
   background-color: #ecf0f3;
   padding: 30px;
   border-radius: 30px;
@@ -83,6 +84,21 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #ecf0f3;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 15px #cbced1, inset -8px -8px 15px white;
+}
+.warehouseContainer .requirements {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.warehouseContainer .requirements input {
   padding: 20px;
   box-sizing: border-box;
   width: 100%;

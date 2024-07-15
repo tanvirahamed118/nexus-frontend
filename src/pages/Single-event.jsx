@@ -49,7 +49,7 @@ function SingleEvent() {
       document.body.style.overflow = "auto";
     }
   }, [submit]);
-
+  console.log(condition);
   return (
     <section className="bg-[#F3F4F6] py-14">
       <div className="container">
@@ -116,23 +116,44 @@ function SingleEvent() {
             <h2 className="text-xl font-bold text-[#3a3a3a]">
               {t("condition")}
             </h2>
-            <ul className="flex flex-col gap-2 pt-2">
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">{condition}</p>
-              </li>
-            </ul>
+            {condition?.length === 0 ? (
+              "Empty Condtions"
+            ) : (
+              <ul className="flex flex-col gap-2 pt-2">
+                {condition?.[0]?.map(
+                  (item, index) =>
+                    item && (
+                      <li key={index} className="flex gap-2 items-start">
+                        <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                        <p className="text-black text-base font-normal">
+                          {item}
+                        </p>
+                      </li>
+                    )
+                )}
+              </ul>
+            )}
             <h2 className="text-xl font-bold text-[#3a3a3a] pt-5">
               {t("requirements")}
             </h2>
-            <ul className="flex flex-col gap-2 pt-2">
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requirement}
-                </p>
-              </li>
-            </ul>
+            {requirement?.length === 0 ? (
+              "Empty Requirements"
+            ) : (
+              <ul className="flex flex-col gap-2 pt-2">
+                {requirement?.[0]?.map(
+                  (item, index) =>
+                    item && (
+                      <li key={index} className="flex gap-2 items-start">
+                        <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                        <p className="text-black text-base font-normal">
+                          {item}
+                        </p>
+                      </li>
+                    )
+                )}
+              </ul>
+            )}
+
             {findSubmit?.length === 1 && (
               <p
                 className="bg-[#FDF3D8] text-[#947a3d] font-normal text-base py-3 px-5 rounded-md
@@ -186,7 +207,7 @@ function SingleEvent() {
                     <p>{t("loading")}</p>
                   </>
                 ) : (
-                  ""
+                  t("cancelSubmit")
                 )}
               </button>
             )}

@@ -76,7 +76,16 @@ function DashboardSingleEvent() {
             <h2 className="text-xl !font-bold text-black !pb-0">
               Event Condition
             </h2>
-            <p>{condition}</p>
+
+            {condition?.[0]?.map(
+              (item, index) =>
+                item && (
+                  <span key={index} className="flex gap-2">
+                    <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                    <p>{item}</p>
+                  </span>
+                )
+            )}
           </div>
           <div>
             <h2 className="text-xl !font-bold text-black !pb-0">
@@ -88,7 +97,15 @@ function DashboardSingleEvent() {
             <h2 className="text-xl !font-bold text-black !pb-0">
               Event Requirement
             </h2>
-            <p>{requirement}</p>
+            {requirement?.[0]?.map(
+              (item, index) =>
+                item && (
+                  <span key={index} className="flex gap-2">
+                    <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                    <p>{item}</p>
+                  </span>
+                )
+            )}
           </div>
         </div>
       </div>

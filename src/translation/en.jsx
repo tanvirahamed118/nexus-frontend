@@ -60,8 +60,9 @@ const en = {
   action: "Actions",
   view: "View",
   beOne: "BE ONE OF OUR EXCLUSIVE MEMBERS",
-  influencer: "ARE YOU AN INFLUENCER ?",
-  getIncredible: "Get incredible invitations to live your best life !",
+  influencer: "Are you a content creator?",
+  getIncredible:
+    "Get amazing barter exchanges with hotels, restaurants, villas, brands + more?",
   applyNow: "Apply Now",
   viewAllEvents: "View All Events",
   myProfile: "My Profile",
@@ -372,6 +373,8 @@ const en = {
   canceled: "Canceled",
   requireSubmission: "Require Submission",
   updateEventInfo: "Update Event Info",
+  cancelSubmit: "Cancel Now",
+  close: "Close",
 };
 
 export default en;

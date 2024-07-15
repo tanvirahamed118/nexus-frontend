@@ -28,7 +28,7 @@ function Footer() {
                   to="/contact"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  c{t("contactUs")}
+                  {t("contactUs")}
                 </Link>
               </li>
               <li>
@@ -36,7 +36,7 @@ function Footer() {
                   to="/terms-condition"
                   className="text-[#ccc] font-medium text-base uppercase hover:text-white"
                 >
-                  Terms & {t("terms")}
+                  {t("terms")}
                 </Link>
               </li>
               <li>

@@ -1,6 +1,6 @@
 const ind = {
-  home: "Rumah",
-  brand: "Merek",
+  home: "Halaman Depan",
+  brand: "Brand",
   contact: "Kontak",
   login: "Gabung",
   register: "Daftar",
@@ -60,9 +60,9 @@ const ind = {
   action: "Tindakan",
   view: "Melihat",
   beOne: "JADILAH SALAH SATU ANGGOTA EKSKLUSIF KAMI",
-  influencer: "APAKAH ANDA SEORANG INFLUENCER?",
+  influencer: "Apakah anda seorang content creator?",
   getIncredible:
-    "Dapatkan undangan luar biasa untuk menjalani hidup terbaik Anda!",
+    "Dapatkan pertukaran barter yang luar biasa dengan hotel-hotel, restoran, villa, brand-brand + more?",
   applyNow: "Lamar Sekarang",
   viewAllEvents: "Lihat Semua Acara",
   myProfile: "Profil saya",
@@ -375,6 +375,8 @@ const ind = {
   canceled: "Dibatalkan",
   requireSubmission: "Membutuhkan Penyerahan",
   updateEventInfo: "Perbarui Info Acara",
+  cancelSubmit: "Batalkan Sekarang",
+  close: "Menutup",
 };
 
 export default ind;
