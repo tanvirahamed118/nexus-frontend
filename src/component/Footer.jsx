@@ -13,8 +13,8 @@ function Footer() {
               <img src={Logo} alt="" className="w-40" />
             </Link>
           </div>
-          <div className="mt-5">
-            <ul className="flex gap-5">
+          <div className="mt-5 px-2">
+            <ul className="flex md:flex-row flex-wrap gap-5 items-center justify-center">
               <li>
                 <Link
                   to="/faq"

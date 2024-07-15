@@ -15,7 +15,7 @@ function CallOfAction() {
           <h2 className="text-[#ffc670] text-2xl font-bold italic md:text-5xl">
             {t("influencer")}
           </h2>
-          <h3 className="text-white text-base font-bold md:text-3xl">
+          <h3 className="text-white text-base font-bold md:text-3xl text-center">
             {t("getIncredible")}
           </h3>
           {!user?.userToken && (
@@ -27,7 +27,7 @@ function CallOfAction() {
             </Link>
           )}
           {user?.userToken && (
-            <div className="flex gap-5 items-center w-full justify-center">
+            <div className="flex md:flex-row flex-col md:gap-5 gap-2 items-center w-full justify-center">
               <Link
                 to="/event"
                 className="bg-[#cfa361] w-72 px-10 text-center py-3 text-white font-bold text-base rounded-full hover:bg-white hover:text-black transition-all mt-5 md:text-lg"

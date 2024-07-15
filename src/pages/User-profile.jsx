@@ -30,7 +30,7 @@ function UserProfile() {
   } = data || {};
 
   return (
-    <section className="bg-[#F3F4F6] py-14">
+    <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
         <div>
           <div className="flex justify-end">
@@ -55,7 +55,7 @@ function UserProfile() {
                 {firstname + " " + lastname}
               </Link>
             </div>
-            <div className="flex gap-5 items-center">
+            <div className="flex gap-5 items-center md:flex-row flex-wrap justify-center">
               <span className="flex gap-2 items-center">
                 <i className="fa-brands fa-snapchat text-[#999] text-md"></i>
                 <p className="text-[#999] text-base font-nomal">

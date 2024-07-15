@@ -98,7 +98,7 @@ function Events() {
   }
 
   return (
-    <section className="bg-[#F3F4F6] py-14">
+    <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
         <Filter />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">{content}</div>

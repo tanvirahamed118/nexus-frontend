@@ -27,7 +27,7 @@ function MyEvent() {
     return false;
   };
   return (
-    <section className="bg-[#F3F4F6] py-14">
+    <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
         <div className="flex items-center justify-between pb-10">
           <h2 className="lg:text-5xl text-black font-bold capitalize">
