@@ -100,42 +100,40 @@ function MobileNav({ handleLogout, menu, menuref, userAuth, setMenu }) {
         )}
 
         {userAuth?.userToken && (
-          <>
-            <li>
-              <Link
-                to="/account/change-password"
-                onClick={() => setMenu(false)}
-                className="text-base md:text-lg font-normal text-black hover:text-[#cfa361]"
-              >
-                {t("changePassword")}
-              </Link>
-            </li>
-            <li className="flex gap-5 items-center">
-              <img
-                src={English}
-                alt=""
-                className="w-6 h-4 border border-gray-300 cursor-pointer"
-                onClick={() => changeLanguage("en")}
-              />
-              <img
-                src={Indoneshia}
-                alt=""
-                className="w-6 h-4 border border-gray-300 cursor-pointer"
-                onClick={() => changeLanguage("ind")}
-              />
-            </li>
-            {userAuth?.userToken && (
-              <li>
-                <Link
-                  to=""
-                  onClick={() => handleLogOut}
-                  className="bg-red-500 text-base md:text-lg font-normal text-white block text-center py-3 rounded-md hover:bg-red-600"
-                >
-                  {t("logout")}
-                </Link>
-              </li>
-            )}
-          </>
+          <li>
+            <Link
+              to="/account/change-password"
+              onClick={() => setMenu(false)}
+              className="text-base md:text-lg font-normal text-black hover:text-[#cfa361]"
+            >
+              {t("changePassword")}
+            </Link>
+          </li>
+        )}
+        <li className="flex gap-5 items-center">
+          <img
+            src={English}
+            alt=""
+            className="w-6 h-4 border border-gray-300 cursor-pointer"
+            onClick={() => changeLanguage("en")}
+          />
+          <img
+            src={Indoneshia}
+            alt=""
+            className="w-6 h-4 border border-gray-300 cursor-pointer"
+            onClick={() => changeLanguage("ind")}
+          />
+        </li>
+        {userAuth?.userToken && (
+          <li>
+            <Link
+              to=""
+              onClick={() => handleLogOut}
+              className="bg-red-500 text-base md:text-lg font-normal text-white block text-center py-3 rounded-md hover:bg-red-600"
+            >
+              {t("logout")}
+            </Link>
+          </li>
         )}
       </ul>
     </div>
