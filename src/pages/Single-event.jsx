@@ -1,4 +1,3 @@
-import Hero from "../assets/hero-image-home.jpg";
 import Avater from "../assets/default_avatar.jpg";
 import { Link, useParams } from "react-router-dom";
 import { useGetOneEventQuery } from "../redux/rtk/features/event/eventApi";
@@ -9,6 +8,7 @@ import {
   useGetAllApplyQuery,
 } from "../redux/rtk/features/apply/applyApi";
 import { useTranslation } from "react-i18next";
+import StarRating from "../component/Star-rating";
 
 function SingleEvent() {
   const { t } = useTranslation();
@@ -29,8 +29,8 @@ function SingleEvent() {
     adminPic,
     star,
     eventPic,
-    condition,
-    requirement,
+    conditions,
+    requirements,
     description,
   } = data || {};
 
@@ -49,7 +49,15 @@ function SingleEvent() {
       document.body.style.overflow = "auto";
     }
   }, [submit]);
-  console.log(condition);
+  let requ;
+  if (requirements) {
+    requ = JSON?.parse(requirements);
+  }
+  let cond;
+  if (conditions) {
+    cond = JSON?.parse(conditions);
+  }
+
   return (
     <section className="bg-[#F3F4F6] py-14">
       <div className="container">
@@ -66,7 +74,7 @@ function SingleEvent() {
           <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12">
             <div className="w-5/12 h-full">
               <img
-                src={eventPic ? eventPic : Hero}
+                src={eventPic}
                 alt=""
                 className="w-full h-full rounded-l-xl object-cover"
               />
@@ -97,12 +105,7 @@ function SingleEvent() {
                     {location}
                   </p>
                 </span>
-                <span className="flex gap-2 items-center">
-                  <i className="fa-solid fa-star text-sm text-[#976d44]"></i>
-                  <p className="text-base font-normal text-[#3a3a3a] capitalize">
-                    {star}
-                  </p>
-                </span>
+                <StarRating rating={star} />
                 <span className="flex gap-2 items-center">
                   <i className="fa-solid fa-clock text-sm text-[#976d44]"></i>
                   <p className="text-base font-normal text-[#3a3a3a] capitalize">
@@ -116,43 +119,76 @@ function SingleEvent() {
             <h2 className="text-xl font-bold text-[#3a3a3a]">
               {t("condition")}
             </h2>
-            {condition?.length === 0 ? (
-              "Empty Condtions"
-            ) : (
-              <ul className="flex flex-col gap-2 pt-2">
-                {condition?.[0]?.map(
-                  (item, index) =>
-                    item && (
-                      <li key={index} className="flex gap-2 items-start">
-                        <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                        <p className="text-black text-base font-normal">
-                          {item}
-                        </p>
-                      </li>
-                    )
-                )}
-              </ul>
-            )}
+
+            <ul className="flex flex-col gap-2 pt-2">
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {cond?.conditionsOne}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {cond?.conditionsTow}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {cond?.conditionsThree}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {cond?.conditionsFour}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {cond?.conditionsFive}
+                </p>
+              </li>
+            </ul>
+
             <h2 className="text-xl font-bold text-[#3a3a3a] pt-5">
               {t("requirements")}
             </h2>
-            {requirement?.length === 0 ? (
-              "Empty Requirements"
-            ) : (
-              <ul className="flex flex-col gap-2 pt-2">
-                {requirement?.[0]?.map(
-                  (item, index) =>
-                    item && (
-                      <li key={index} className="flex gap-2 items-start">
-                        <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                        <p className="text-black text-base font-normal">
-                          {item}
-                        </p>
-                      </li>
-                    )
-                )}
-              </ul>
-            )}
+
+            <ul className="flex flex-col gap-2 pt-2">
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {requ?.requirementOne}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {requ?.requirementTow}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {requ?.requirementThree}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {requ?.requirementFour}
+                </p>
+              </li>
+              <li className="flex gap-2 items-start">
+                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                <p className="text-black text-base font-normal">
+                  {requ?.requirementFive}
+                </p>
+              </li>
+            </ul>
 
             {findSubmit?.length === 1 && (
               <p

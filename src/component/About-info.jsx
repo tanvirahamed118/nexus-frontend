@@ -8,6 +8,7 @@ function AboutInfo() {
   const id = user?.user?._id;
   const { data } = useGetOneUserQuery(id);
   const { video, bio } = data || {};
+
   return (
     <div className="flex flex-col gap-6 py-5">
       <div>

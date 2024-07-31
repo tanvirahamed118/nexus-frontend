@@ -24,24 +24,40 @@ const UpdateEvent = () => {
   const [event, setEvent] = useState({
     title: "",
     category: "",
-    condition: "",
     description: "",
     location: "",
     star: "",
-    requirement: "",
     adminId: admin?._id,
   });
+  const [requirements, setRequirements] = useState({
+    requirementOne: "",
+    requirementTow: "",
+    requirementThree: "",
+    requirementFour: "",
+    requirementFive: "",
+  });
+  const [conditions, setCondtions] = useState({
+    conditionsOne: "",
+    conditionsTow: "",
+    conditionsThree: "",
+    conditionsFour: "",
+    conditionsFive: "",
+  });
+  const requirementHandleChange = (e) => {
+    setRequirements({
+      ...requirements,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const conditionsHandleChange = (e) => {
+    setCondtions({
+      ...conditions,
+      [e.target.name]: e.target.value,
+    });
+  };
   const Ref = useRef();
   const [eventPic, seteventPic] = useState(null);
-  const {
-    title,
-    category,
-    condition,
-    description,
-    location,
-    star,
-    requirement,
-  } = event || {};
+  const { title, category, description, location, star } = event || {};
 
   const handleChange = (e) => {
     setEvent({
@@ -52,10 +68,19 @@ const UpdateEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const combinedEvent = {
+      ...event,
+      requirements: { ...requirements },
+      conditions: { ...conditions },
+    };
     const formData = new FormData();
     formData.append("eventPic", eventPic);
-    Object.keys(event).forEach((key) => {
-      formData.append(key, event[key]);
+    Object.keys(combinedEvent).forEach((key) => {
+      if (typeof combinedEvent[key] === "object") {
+        formData.append(key, JSON.stringify(combinedEvent[key]));
+      } else {
+        formData.append(key, combinedEvent[key]);
+      }
     });
     try {
       await createEvent({ formData, id });
@@ -68,6 +93,20 @@ const UpdateEvent = () => {
         star: "",
         requirement: "",
         adminId: admin?._id,
+      });
+      setRequirements({
+        requirementOne: "",
+        requirementTow: "",
+        requirementThree: "",
+        requirementFour: "",
+        requirementFive: "",
+      });
+      setCondtions({
+        conditionsOne: "",
+        conditionsTow: "",
+        conditionsThree: "",
+        conditionsFour: "",
+        conditionsFive: "",
       });
       if (Ref.current) {
         Ref.current.value = "";
@@ -88,6 +127,16 @@ const UpdateEvent = () => {
 
   useEffect(() => {
     setEvent(getData);
+    let cond;
+    if (getData?.conditions) {
+      cond = JSON.parse(getData?.conditions);
+    }
+    setCondtions(cond);
+    let requ;
+    if (getData?.requirements) {
+      requ = JSON.parse(getData?.requirements);
+    }
+    setRequirements(requ);
   }, [getData]);
 
   return (
@@ -147,7 +196,7 @@ const UpdateEvent = () => {
                     {t("location")}
                   </label>
                   <span>
-                    <input
+                    <textarea
                       required
                       onChange={(e) => handleChange(e)}
                       value={location}
@@ -155,7 +204,8 @@ const UpdateEvent = () => {
                       name="location"
                       id="location"
                       placeholder={t("location")}
-                    />
+                      rows={3}
+                    ></textarea>
                   </span>
                 </div>
                 <div className={Style.formField}>
@@ -165,16 +215,49 @@ const UpdateEvent = () => {
                   >
                     {t("requirements")}
                   </label>
-                  <span>
-                    <textarea
-                      name="requirement"
+                  <div className={Style.requirements}>
+                    <input
+                      type="text"
+                      name="requirementOne"
                       id="requirement"
-                      onChange={handleChange}
-                      value={requirement}
+                      onChange={requirementHandleChange}
+                      value={requirements.requirementOne}
                       placeholder={t("requirements")}
-                      rows={3}
-                    ></textarea>
-                  </span>
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="requirementTow"
+                      id="requirement"
+                      onChange={requirementHandleChange}
+                      value={requirements.requirementTow}
+                      placeholder={t("requirements")}
+                    />
+                    <input
+                      type="text"
+                      name="requirementThree"
+                      id="requirement"
+                      onChange={requirementHandleChange}
+                      value={requirements.requirementThree}
+                      placeholder={t("requirements")}
+                    />
+                    <input
+                      type="text"
+                      name="requirementFour"
+                      id="requirement"
+                      onChange={requirementHandleChange}
+                      value={requirements.requirementFour}
+                      placeholder={t("requirements")}
+                    />
+                    <input
+                      type="text"
+                      name="requirementFive"
+                      id="requirement"
+                      onChange={requirementHandleChange}
+                      value={requirements.requirementFive}
+                      placeholder={t("requirements")}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={Style.rightBox}>
@@ -242,26 +325,6 @@ const UpdateEvent = () => {
                     </select>
                   </span>
                 </div>
-
-                <div className={Style.formField}>
-                  <label
-                    htmlFor="condition"
-                    className="text-xl font-normal text-black"
-                  >
-                    {t("condition")}
-                  </label>
-                  <span>
-                    <input
-                      type="text"
-                      value={condition}
-                      id="condition"
-                      onChange={handleChange}
-                      required
-                      name="condition"
-                      placeholder={t("condition")}
-                    />
-                  </span>
-                </div>
                 <div className={Style.formField}>
                   <label
                     htmlFor="description"
@@ -279,6 +342,57 @@ const UpdateEvent = () => {
                       rows={3}
                     ></textarea>
                   </span>
+                </div>
+                <div className={Style.formField}>
+                  <label
+                    htmlFor="condition"
+                    className="text-xl font-normal text-black"
+                  >
+                    {t("condition")}
+                  </label>
+                  <div className={Style.requirements}>
+                    <input
+                      type="text"
+                      value={conditions?.conditionsOne}
+                      id="condition"
+                      onChange={conditionsHandleChange}
+                      required
+                      name="conditionsOne"
+                      placeholder={t("condition")}
+                    />
+                    <input
+                      type="text"
+                      value={conditions?.conditionsTow}
+                      id="condition"
+                      onChange={conditionsHandleChange}
+                      name="conditionsTow"
+                      placeholder={t("condition")}
+                    />
+                    <input
+                      type="text"
+                      value={conditions?.conditionsThree}
+                      id="condition"
+                      onChange={conditionsHandleChange}
+                      name="conditionsThree"
+                      placeholder={t("condition")}
+                    />
+                    <input
+                      type="text"
+                      value={conditions?.conditionsFour}
+                      id="condition"
+                      onChange={conditionsHandleChange}
+                      name="conditionsFour"
+                      placeholder={t("condition")}
+                    />
+                    <input
+                      type="text"
+                      value={conditions?.conditionsFive}
+                      id="condition"
+                      onChange={conditionsHandleChange}
+                      name="conditionsFive"
+                      placeholder={t("condition")}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

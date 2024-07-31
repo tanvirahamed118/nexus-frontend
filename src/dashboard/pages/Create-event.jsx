@@ -66,13 +66,17 @@ const CreateEvent = () => {
     e.preventDefault();
     const combinedEvent = {
       ...event,
-      requirement: Object.values(requirements).join(" "),
-      condition: Object.values(conditions).join(" "),
+      requirements: { ...requirements },
+      conditions: { ...conditions },
     };
     const formData = new FormData();
     formData.append("eventPic", eventPic);
     Object.keys(combinedEvent).forEach((key) => {
-      formData.append(key, combinedEvent[key]);
+      if (typeof combinedEvent[key] === "object") {
+        formData.append(key, JSON.stringify(combinedEvent[key]));
+      } else {
+        formData.append(key, combinedEvent[key]);
+      }
     });
     try {
       await createEvent(formData);
@@ -295,11 +299,11 @@ const CreateEvent = () => {
                       <option value="" selected disabled>
                         {t("selectOne")}
                       </option>
-                      <option value="*">1</option>
-                      <option value="**">2</option>
-                      <option value="***">3</option>
-                      <option value="****">4</option>
-                      <option value="*****">5</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
                     </select>
                   </span>
                 </div>
