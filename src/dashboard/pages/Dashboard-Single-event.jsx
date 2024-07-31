@@ -12,13 +12,22 @@ function DashboardSingleEvent() {
     eventPic,
     adminPic,
     adminName,
-    condition,
+    conditions,
     description,
     location,
     star,
-    requirement,
+    requirements,
     createdAt,
   } = data || {};
+
+  let requ;
+  if (requirements) {
+    requ = JSON?.parse(requirements);
+  }
+  let cond;
+  if (conditions) {
+    cond = JSON?.parse(conditions);
+  }
   return (
     <section className="p-10 ">
       <div className="p-10 bg-[#ffffffe8] w-full lg:w-8/12 shadow-md rounded-md overflow-y-scroll h-[80vh]">
@@ -49,63 +58,117 @@ function DashboardSingleEvent() {
         <div className="py-10">
           <img src={eventPic} alt="" className="w-full h-auto object-cover" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">Event Title</h2>
-            <p className="text-base font-normal text-[#000000b0]">{title}</p>
-          </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Category
-            </h2>
-            <p>{category}</p>
-          </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Rating
-            </h2>
-            <p>{star}</p>
-          </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Location
-            </h2>
-            <p>{location}</p>
-          </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Condition
-            </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="flex flex-col gap-5">
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Title
+              </h2>
+              <p className="text-base font-normal text-[#000000b0]">{title}</p>
+            </div>
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Rating
+              </h2>
+              <p>{star}</p>
+            </div>
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Location
+              </h2>
+              <p>{location}</p>
+            </div>
 
-            {condition?.[0]?.map(
-              (item, index) =>
-                item && (
-                  <span key={index} className="flex gap-2">
-                    <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                    <p>{item}</p>
-                  </span>
-                )
-            )}
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Description
+              </h2>
+              <p>{description}</p>
+            </div>
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Category
+              </h2>
+              <p>{category}</p>
+            </div>
           </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Description
-            </h2>
-            <p>{description}</p>
-          </div>
-          <div>
-            <h2 className="text-xl !font-bold text-black !pb-0">
-              Event Requirement
-            </h2>
-            {requirement?.[0]?.map(
-              (item, index) =>
-                item && (
-                  <span key={index} className="flex gap-2">
-                    <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                    <p>{item}</p>
-                  </span>
-                )
-            )}
+          <div className="flex flex-col gap-10">
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Condition
+              </h2>
+
+              <ul className="flex flex-col gap-2">
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsOne}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsTow}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsThree}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsFour}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsFive}
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="text-xl !font-bold text-black !pb-0">
+                Event Requirement
+              </h2>
+              <ul className="flex flex-col gap-2 pt-2">
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementOne}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementTow}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementThree}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementFour}
+                  </p>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementFive}
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

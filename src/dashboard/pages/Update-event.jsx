@@ -221,7 +221,7 @@ const UpdateEvent = () => {
                       name="requirementOne"
                       id="requirement"
                       onChange={requirementHandleChange}
-                      value={requirements.requirementOne}
+                      value={requirements?.requirementOne}
                       placeholder={t("requirements")}
                       required
                     />
@@ -230,7 +230,7 @@ const UpdateEvent = () => {
                       name="requirementTow"
                       id="requirement"
                       onChange={requirementHandleChange}
-                      value={requirements.requirementTow}
+                      value={requirements?.requirementTow}
                       placeholder={t("requirements")}
                     />
                     <input
@@ -238,7 +238,7 @@ const UpdateEvent = () => {
                       name="requirementThree"
                       id="requirement"
                       onChange={requirementHandleChange}
-                      value={requirements.requirementThree}
+                      value={requirements?.requirementThree}
                       placeholder={t("requirements")}
                     />
                     <input
@@ -246,7 +246,7 @@ const UpdateEvent = () => {
                       name="requirementFour"
                       id="requirement"
                       onChange={requirementHandleChange}
-                      value={requirements.requirementFour}
+                      value={requirements?.requirementFour}
                       placeholder={t("requirements")}
                     />
                     <input
@@ -254,7 +254,7 @@ const UpdateEvent = () => {
                       name="requirementFive"
                       id="requirement"
                       onChange={requirementHandleChange}
-                      value={requirements.requirementFive}
+                      value={requirements?.requirementFive}
                       placeholder={t("requirements")}
                     />
                   </div>
@@ -317,11 +317,11 @@ const UpdateEvent = () => {
                       <option value="" selected disabled>
                         {t("selectOne")}
                       </option>
-                      <option value="*">1</option>
-                      <option value="**">2</option>
-                      <option value="***">3</option>
-                      <option value="****">4</option>
-                      <option value="*****">5</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
                     </select>
                   </span>
                 </div>
