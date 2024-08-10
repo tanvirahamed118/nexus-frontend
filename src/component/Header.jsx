@@ -6,14 +6,17 @@ import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Indoneshia from "../assets/indoneshia.png";
 import English from "../assets/english.png";
+import { useGetOneUserQuery } from "../redux/rtk/features/auth/user/authApi";
 
 function Header() {
   const { t, i18n } = useTranslation();
 
   const user = localStorage.getItem("user");
+  const userAuth = JSON.parse(user);
+  const { data } = useGetOneUserQuery(userAuth?.user?._id);
+
   const [menu, setMenu] = useState(false);
   const menuref = useRef();
-  const userAuth = JSON.parse(user);
   const navigate = useNavigate();
   const handleLogout = () => {
     if (userAuth?.userToken) {
@@ -147,11 +150,7 @@ function Header() {
                 <li>
                   <Link to="/user-profile">
                     <img
-                      src={
-                        userAuth?.user?.profile
-                          ? userAuth?.user?.profile
-                          : Avater
-                      }
+                      src={data?.profile ? data?.profile : Avater}
                       alt=""
                       className="w-10 rounded-full h-10 object-cover"
                     />

@@ -26,6 +26,7 @@ function MyEvent() {
     }
     return false;
   };
+  console.log(data);
   return (
     <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
