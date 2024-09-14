@@ -28,10 +28,24 @@ const AdminSetting = () => {
     Organization: "",
     description: "",
     phone: "",
+    facebook: "",
+    instagram: "",
+    linkedin: "",
+    tiktok: "",
   });
 
-  const { firstname, lastname, email, Organization, description, phone } =
-    adminData || {};
+  const {
+    firstname,
+    lastname,
+    email,
+    Organization,
+    description,
+    phone,
+    facebook,
+    instagram,
+    linkedin,
+    tiktok,
+  } = adminData || {};
 
   const handleChange = (e) => {
     setAdminData({
@@ -164,6 +178,44 @@ const AdminSetting = () => {
                     />
                   </span>
                 </div>
+                <div className={Style.formField}>
+                  <label
+                    htmlFor="linkedin"
+                    className="text-xl font-normal text-black"
+                  >
+                    {t("linkedin")}
+                  </label>
+                  <span>
+                    <input
+                      onChange={(e) => handleChange(e)}
+                      value={linkedin}
+                      type="text"
+                      name="linkedin"
+                      placeholder={t("linkedin")}
+                      id="linkedin"
+                      required
+                    />
+                  </span>
+                </div>
+                <div className={Style.formField}>
+                  <label
+                    htmlFor="tiktok"
+                    className="text-xl font-normal text-black"
+                  >
+                    {t("tiktok")}
+                  </label>
+                  <span>
+                    <input
+                      onChange={(e) => handleChange(e)}
+                      value={tiktok}
+                      type="text"
+                      name="tiktok"
+                      placeholder={t("tiktok")}
+                      id="tiktok"
+                      required
+                    />
+                  </span>
+                </div>
               </div>
               <div className={Style.rightBox}>
                 <div className={Style.formField}>
@@ -238,6 +290,44 @@ const AdminSetting = () => {
                       name="Organization"
                       placeholder={t("organization")}
                       id="Organization"
+                      required
+                    />
+                  </span>
+                </div>
+                <div className={Style.formField}>
+                  <label
+                    htmlFor="facebook"
+                    className="text-xl font-normal text-black"
+                  >
+                    {t("facebook")}
+                  </label>
+                  <span>
+                    <input
+                      onChange={(e) => handleChange(e)}
+                      value={facebook}
+                      type="text"
+                      name="facebook"
+                      placeholder={t("facebook")}
+                      id="facebook"
+                      required
+                    />
+                  </span>
+                </div>
+                <div className={Style.formField}>
+                  <label
+                    htmlFor="instagram"
+                    className="text-xl font-normal text-black"
+                  >
+                    {t("instagram")}
+                  </label>
+                  <span>
+                    <input
+                      onChange={(e) => handleChange(e)}
+                      value={instagram}
+                      type="text"
+                      name="instagram"
+                      placeholder={t("instagram")}
+                      id="instagram"
                       required
                     />
                   </span>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
   useGetOneUserQuery,
-  useUpdateUserMutation,
+  useUpdateUserDescriptionMutation,
 } from "../redux/rtk/features/auth/user/authApi";
 import toast, { Toaster } from "react-hot-toast";
 import { useTranslation } from "react-i18next";
@@ -11,23 +11,26 @@ function DescriptionTab() {
   const { t } = useTranslation();
   const response = JSON.parse(userAuth);
   const id = response?.user?._id;
-  const [formData, setUser] = useState({
+  const [user, setUser] = useState({
     bio: "",
   });
   const { data } = useGetOneUserQuery(id);
-  const [updateUser, { data: getData, isLoading, isError, isSuccess, error }] =
-    useUpdateUserMutation();
-  const { bio } = formData || {};
+  const [
+    updateUserDescription,
+    { data: getData, isLoading, isError, isSuccess, error },
+  ] = useUpdateUserDescriptionMutation();
+  const { bio } = user || {};
 
   const handleChange = (e) => {
     setUser({
-      ...formData,
+      ...user,
       [e.target.name]: e.target.value,
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUser({ formData, id });
+    console.log({ user, id });
+    updateUserDescription({ user, id });
 
     setUser({
       bio: "",

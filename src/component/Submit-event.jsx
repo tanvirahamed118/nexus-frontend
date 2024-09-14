@@ -53,7 +53,18 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
       toast.success(resData?.message);
     }
   }, [isError, isSuccess, resData, error]);
+  useEffect(() => {
+    if (submit) {
+      document.body.style.overflow = "hidden"; // Disable scroll
+      window.scrollTo(0, 0); // Scroll to top
+    } else {
+      document.body.style.overflow = "auto"; // Re-enable scroll when popup closes
+    }
 
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup when component unmounts
+    };
+  }, [submit]);
   return (
     <div
       className={
@@ -172,6 +183,6 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
 SubmitEvent.propTypes = {
   submit: PropTypes.bool,
   setSubmit: PropTypes.func,
-  data: PropTypes.array,
+  data: PropTypes.object,
 };
 export default SubmitEvent;

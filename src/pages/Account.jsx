@@ -19,7 +19,7 @@ function Account() {
 
   const { firstname, lastname, profile } = data || {};
   return (
-    <section className="bg-[#fff] py-14 h-full md:h-screen flex justify-center items-center px-5 md:px-0">
+    <section className="bg-[#fff] py-14 h-full flex justify-center items-center px-5 md:px-0">
       <div className="container flex md:flex-row flex-col gap-5 items-center">
         <div className="w-full md:w-4/12">
           <div className="flex flex-col items-center">

@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo-white.png";
 import { useTranslation } from "react-i18next";
+import { useGetOneAdminQuery } from "../redux/rtk/features/auth/admin/authApi";
 
 function Footer() {
   const { t } = useTranslation();
+  const adminAuth = localStorage.getItem("admin");
+  const admin = JSON.parse(adminAuth);
+  const id = admin?.admin?._id;
+  const { data } = useGetOneAdminQuery(id);
+  const { instagram, facebook, linkedin, tiktok } = data || {};
   return (
     <>
       <section className="bg-black py-5 md:py-10">
@@ -58,18 +64,18 @@ function Footer() {
             </ul>
           </div>
           <div className="flex gap-5">
-            <Link to="">
+            <a href={facebook} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-facebook text-[#b6b6b6] text-xl hover:text-white"></i>
-            </Link>
-            <Link to="">
+            </a>
+            <a href={instagram} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-instagram text-[#b6b6b6] text-xl hover:text-white"></i>
-            </Link>
-            <Link to="">
+            </a>
+            <a href={linkedin} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-linkedin text-[#b6b6b6] text-xl hover:text-white"></i>
-            </Link>
-            <Link to="">
+            </a>
+            <a href={tiktok} target="_blank" rel="noopener noreferrer">
               <i className="fa-brands fa-tiktok text-[#b6b6b6] text-xl hover:text-white"></i>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Banner from "../assets/pexels-quark-studio-3201920-scaled.jpg";
 import { useGetAllEventQuery } from "../redux/rtk/features/event/eventApi";
 import { useTranslation } from "react-i18next";
+import ListEventLoading from "./List-event-loading";
 
 function Events() {
   const { data, isLoading, isError } = useGetAllEventQuery();
@@ -10,6 +11,16 @@ function Events() {
   let content;
   if (!isLoading && !isError && data?.length === 0) {
     content = <p>{t("eventNotFound")}</p>;
+  }
+  if (isLoading) {
+    content = (
+      <>
+        <ListEventLoading />
+        <ListEventLoading />
+        <ListEventLoading />
+        <ListEventLoading />
+      </>
+    );
   }
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.slice(0, 8)?.map((item) => {

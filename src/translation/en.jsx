@@ -1,6 +1,7 @@
 const en = {
   home: "Home",
   brand: "Brand",
+  linkedin: "LinkedIn",
   contact: "Contact",
   login: "login",
   register: "register",
@@ -312,7 +313,7 @@ const en = {
   description: "Description",
   cancelReq: "Cancel Request?",
   pleaseLoginToApply: "Please Login to Apply",
-  youCanSubmit: "You can submit requirements after atending it",
+  youCanSubmit: "You can submit requirements after attending here",
   eventDate: "Event Date",
   eventTime: "Event Time",
   selectTime: "Select Time",

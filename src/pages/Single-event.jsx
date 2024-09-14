@@ -9,12 +9,13 @@ import {
 } from "../redux/rtk/features/apply/applyApi";
 import { useTranslation } from "react-i18next";
 import StarRating from "../component/Star-rating";
+import SingleEventLoading from "../component/Single-event-loading";
 
 function SingleEvent() {
   const { t } = useTranslation();
   const params = useParams();
   const id = params.id;
-  const { data } = useGetOneEventQuery(id);
+  const { data, isLoading: eventLoading } = useGetOneEventQuery(id);
   const { data: getSubmit } = useGetAllApplyQuery();
   const [deleteApply, { isLoading }] = useDeleteApplyMutation();
   const findSubmit = getSubmit?.filter((item) => item.eventID === id);
@@ -58,6 +59,59 @@ function SingleEvent() {
     cond = JSON?.parse(conditions);
   }
 
+  let content;
+  if (eventLoading) {
+    content = <SingleEventLoading />;
+  }
+  if (data?._id) {
+    content = (
+      <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12">
+        <div className="w-5/12 h-full">
+          <img
+            src={eventPic}
+            alt=""
+            className="w-full h-full rounded-l-xl object-cover"
+          />
+        </div>
+        <div className="w-7/12 p-5 flex flex-col gap-10">
+          <div className="flex flex-col gap-2 items-start">
+            <h2 className="text-[#3a3a3a] text-3xl font-bold capitalize">
+              {title}
+            </h2>
+            <button className="bg-[#F0F0F0] px-5 py-2 rounded-full text-black text-base font-bold w-auto capitalize">
+              {category}
+            </button>
+            <span className="flex gap-2 items-center">
+              <img
+                src={adminPic ? adminPic : Avater}
+                alt=""
+                className="w-10 h-10 object-cover rounded-full"
+              />
+              <p className="text-base font-normal text-[#3a3a3a] capitalize">
+                {adminName ? adminName : "xxxxxxx"}
+              </p>
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="flex gap-2 items-center">
+              <i className="fa-solid fa-location-dot text-sm text-[#976d44]"></i>
+              <p className="text-base font-normal text-[#3a3a3a] capitalize">
+                {location}
+              </p>
+            </span>
+            <StarRating rating={star} />
+            <span className="flex gap-2 items-center">
+              <i className="fa-solid fa-clock text-sm text-[#976d44]"></i>
+              <p className="text-base font-normal text-[#3a3a3a] capitalize">
+                {new Date(data?.createdAt).toDateString()}
+              </p>
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section className="bg-[#F3F4F6] py-14">
       <div className="container">
@@ -71,86 +125,55 @@ function SingleEvent() {
           </Link>
         </div>
         <div className="flex gap-5 lg:flex-row flex-col">
-          <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12">
-            <div className="w-5/12 h-full">
-              <img
-                src={eventPic}
-                alt=""
-                className="w-full h-full rounded-l-xl object-cover"
-              />
-            </div>
-            <div className="w-7/12 p-5 flex flex-col gap-10">
-              <div className="flex flex-col gap-2 items-start">
-                <h2 className="text-[#3a3a3a] text-3xl font-bold capitalize">
-                  {title}
-                </h2>
-                <button className="bg-[#F0F0F0] px-5 py-2 rounded-full text-black text-base font-bold w-auto capitalize">
-                  {category}
-                </button>
-                <span className="flex gap-2 items-center">
-                  <img
-                    src={adminPic ? adminPic : Avater}
-                    alt=""
-                    className="w-10 h-10 object-cover rounded-full"
-                  />
-                  <p className="text-base font-normal text-[#3a3a3a] capitalize">
-                    {adminName ? adminName : "xxxxxxx"}
-                  </p>
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="flex gap-2 items-center">
-                  <i className="fa-solid fa-location-dot text-sm text-[#976d44]"></i>
-                  <p className="text-base font-normal text-[#3a3a3a] capitalize">
-                    {location}
-                  </p>
-                </span>
-                <StarRating rating={star} />
-                <span className="flex gap-2 items-center">
-                  <i className="fa-solid fa-clock text-sm text-[#976d44]"></i>
-                  <p className="text-base font-normal text-[#3a3a3a] capitalize">
-                    {new Date(data?.createdAt).toDateString()}
-                  </p>
-                </span>
-              </div>
-            </div>
-          </div>
+          {content}
           <div className="w-full lg:w-4/12 bg-white rounded-lg p-10 shadow-xl">
             <h2 className="text-xl font-bold text-[#3a3a3a]">
               {t("condition")}
             </h2>
 
             <ul className="flex flex-col gap-2 pt-2">
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {cond?.conditionsOne}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {cond?.conditionsTow}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {cond?.conditionsThree}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {cond?.conditionsFour}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {cond?.conditionsFive}
-                </p>
-              </li>
+              {cond?.conditionsOne && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsOne}
+                  </p>
+                </li>
+              )}
+
+              {cond?.conditionsTow && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsTow}
+                  </p>
+                </li>
+              )}
+              {cond?.conditionsThree && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsThree}
+                  </p>
+                </li>
+              )}
+
+              {cond?.conditionsFour && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsFour}
+                  </p>
+                </li>
+              )}
+              {cond?.conditionsFive && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {cond?.conditionsFive}
+                  </p>
+                </li>
+              )}
             </ul>
 
             <h2 className="text-xl font-bold text-[#3a3a3a] pt-5">
@@ -158,36 +181,50 @@ function SingleEvent() {
             </h2>
 
             <ul className="flex flex-col gap-2 pt-2">
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requ?.requirementOne}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requ?.requirementTow}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requ?.requirementThree}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requ?.requirementFour}
-                </p>
-              </li>
-              <li className="flex gap-2 items-start">
-                <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
-                <p className="text-black text-base font-normal">
-                  {requ?.requirementFive}
-                </p>
-              </li>
+              {requ?.requirementOne && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementOne}
+                  </p>
+                </li>
+              )}
+
+              {requ?.requirementTow && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementTow}
+                  </p>
+                </li>
+              )}
+
+              {requ?.requirementThree && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementThree}
+                  </p>
+                </li>
+              )}
+
+              {requ?.requirementFour && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementFour}
+                  </p>
+                </li>
+              )}
+
+              {requ?.requirementFive && (
+                <li className="flex gap-2 items-start">
+                  <i className="fa-solid fa-angle-right text-base pt-1 text-[#976d44]"></i>
+                  <p className="text-black text-base font-normal">
+                    {requ?.requirementFive}
+                  </p>
+                </li>
+              )}
             </ul>
 
             {findSubmit?.length === 1 && (
