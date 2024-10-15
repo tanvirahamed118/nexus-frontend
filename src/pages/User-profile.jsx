@@ -33,7 +33,7 @@ function UserProfile() {
     <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
         <div>
-          <div className="flex justify-end">
+          <div className="flex justify-end pb-10 lg:pb-0">
             <Link to="/account" className="flex gap-2 items-center ">
               <i className="fa-solid fa-gear text-[#aaa] text-xl hover:text-[#4169e1]"></i>
               <p className="text-[#555] text-lg font-bold hover:underline">

@@ -61,17 +61,17 @@ function Events() {
         item || {};
       return (
         <Link to={`/event/${_id}`} key={_id}>
-          <div className="flex bg-white rounded-xl shadow-md">
-            <div className="w-5/12">
+          <div className="flex lg:flex-row flex-col bg-white rounded-xl shadow-md">
+            <div className="w-full lg:w-5/12">
               <img
                 src={eventPic ? eventPic : Hero}
                 alt=""
-                className="w-full h-72 rounded-l-xl object-cover"
+                className="w-full h-52 lg:h-72 rounded-t-xl lg:rounded-l-xl object-cover"
               />
             </div>
-            <div className="w-7/12 p-5 flex flex-col justify-between">
-              <div className="flex flex-col gap-2">
-                <h2 className="text-[#3a3a3a] text-3xl font-bold capitalize">
+            <div className="w-full lg:w-7/12 p-5 flex flex-col justify-center items-center lg:items-start lg:justify-between">
+              <div className="flex flex-col gap-2 items-center justify-center lg:justify-start lg:items-start">
+                <h2 className="text-[#3a3a3a] text-xl lg:text-3xl font-bold capitalize text-center lg:text-left">
                   {title?.slice(0, 50)}...
                 </h2>
                 <span className="flex gap-2 items-center">
@@ -84,9 +84,9 @@ function Events() {
                   {category}
                 </p>
               </div>
-              <span className="flex gap-2 items-center">
+              <span className="flex gap-2 items-center mt-2 lg:mt-0">
                 <i className="fa-regular fa-calendar text-sm text-[#976d44]"></i>
-                <p className="text-base font-normal text-[#3a3a3a] capitalize">
+                <p className="text-sm lg:text-base font-normal text-[#3a3a3a] capitalize">
                   {new Date(createdAt).toDateString()}
                 </p>
               </span>
@@ -101,7 +101,7 @@ function Events() {
     <section className="bg-[#F3F4F6] py-14 px-2 md:px-0">
       <div className="container">
         <Filter />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">{content}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">{content}</div>
         <div className="flex justify-center pt-10">
           {slicePost?.length >= loadMore && (
             <button

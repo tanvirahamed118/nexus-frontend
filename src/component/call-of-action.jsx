@@ -7,7 +7,7 @@ function CallOfAction() {
   const { t } = useTranslation();
   return (
     <section className="banner-bg relative">
-      <div className="relative bg-gradient-to-t from-[#7a5c2d50] to-[#000000de] w-full h-[60vh] md:h-[70vh] flex items-center flex-col gap-5 pt-32 md:pt-40">
+      <div className="relative bg-gradient-to-t from-[#7a5c2d50] to-[#000000de] w-full h-full py-20 md:py-0 md:h-[70vh] flex items-center flex-col gap-5 pt-32 md:pt-40">
         <div className="flex flex-col justify-center items-center gap-3 md:gap-5">
           <h2 className="text-lg text-white font-bold uppercase md:text-5xl">
             {t("beOne")}

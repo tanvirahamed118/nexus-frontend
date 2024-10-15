@@ -65,20 +65,20 @@ function SingleEvent() {
   }
   if (data?._id) {
     content = (
-      <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12">
-        <div className="w-5/12 h-full">
+      <div className="flex bg-white rounded-xl shadow-md w-full lg:w-9/12 lg:flex-row flex-col">
+        <div className="w-full lg:w-5/12 h-full">
           <img
             src={eventPic}
             alt=""
-            className="w-full h-full rounded-l-xl object-cover"
+            className="w-full h-full rounded-t-xl lg:rounded-l-xl object-cover"
           />
         </div>
-        <div className="w-7/12 p-5 flex flex-col gap-10">
-          <div className="flex flex-col gap-2 items-start">
-            <h2 className="text-[#3a3a3a] text-3xl font-bold capitalize">
+        <div className="w-full lg:w-7/12 p-5 flex flex-col gap-10">
+          <div className="flex flex-col gap-4 lg:gap-2 items-center md:items-start">
+            <h2 className="text-[#3a3a3a] text-xl lg:text-3xl font-bold capitalize text-center lg:text-left">
               {title}
             </h2>
-            <button className="bg-[#F0F0F0] px-5 py-2 rounded-full text-black text-base font-bold w-auto capitalize">
+            <button className="bg-[#F0F0F0] px-5 py-2 rounded-full text-black text-sm lg:text-base font-bold w-auto capitalize">
               {category}
             </button>
             <span className="flex gap-2 items-center">
@@ -92,7 +92,7 @@ function SingleEvent() {
               </p>
             </span>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 items-center lg:items-start pb-5 lg:pb-0">
             <span className="flex gap-2 items-center">
               <i className="fa-solid fa-location-dot text-sm text-[#976d44]"></i>
               <p className="text-base font-normal text-[#3a3a3a] capitalize">
@@ -113,7 +113,7 @@ function SingleEvent() {
   }
 
   return (
-    <section className="bg-[#F3F4F6] py-14">
+    <section className="bg-[#F3F4F6] py-14 px-2 lg:px-0">
       <div className="container">
         <div className="pb-10">
           <Link

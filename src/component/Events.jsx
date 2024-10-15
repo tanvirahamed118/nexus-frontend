@@ -26,15 +26,15 @@ function Events() {
     content = data?.slice(0, 8)?.map((item) => {
       const { _id, eventPic, title, category } = item || {};
       return (
-        <div key={_id} className="flex">
-          <div className="w-4/12 h-80">
+        <div key={_id} className="flex lg:flex-row flex-col">
+          <div className="w-full lg:w-4/12 h-52 md:h-64 lg:h-80">
             <img
               src={eventPic ? eventPic : Banner}
               alt=""
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-col gap-1 justify-center items-center w-8/12 px-5">
+          <div className="flex flex-col gap-1 justify-center items-center w-full lg:w-8/12 px-0 py-10 lg:px-5">
             <Link
               to={`/event/${_id}`}
               className="text-base text-[#cfa361] font-bold md:text-2xl capitalize hover:underline"
@@ -59,7 +59,7 @@ function Events() {
   return (
     <section>
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-2">{content}</div>
+        <div className="grid grid-cols-1 lg:grid-cols-2">{content}</div>
       </div>
     </section>
   );

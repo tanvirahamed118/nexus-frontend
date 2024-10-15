@@ -48,9 +48,11 @@ const DashboardHeader = () => {
               <img
                 src={Logo}
                 alt=""
-                className="w-14 h-14 object-cover bg-white rounded-full p-3 shadow-lg"
+                className="w-full lg:w-14 h-14 object-cover bg-white rounded-sm lg:rounded-full p-3"
               />
-              <h3 className="text-2xl font-bold text-[#5D4B41]">Nexus</h3>
+              <h3 className="text-2xl font-bold text-[#5D4B41] hidden lg:block">
+                Nexus
+              </h3>
             </Link>
           </span>
         </div>
