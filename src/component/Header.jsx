@@ -13,7 +13,10 @@ function Header() {
 
   const user = localStorage.getItem("user");
   const userAuth = JSON.parse(user);
-  const { data } = useGetOneUserQuery(userAuth?.user?._id);
+  const id = userAuth?.user?._id;
+  const { data } = useGetOneUserQuery(id, {
+    skip: !id,
+  });
 
   const [menu, setMenu] = useState(false);
   const menuref = useRef();

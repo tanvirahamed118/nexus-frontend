@@ -69,11 +69,11 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
     <div
       className={
         submit
-          ? "absolute top-0 bg-[#0000001c] w-full h-screen flex justify-center items-center submitActive"
-          : "absolute top-0 bg-[#0000001c] w-full h-screen flex justify-center items-center submitInactive"
+          ? "absolute left-0 top-0 bg-[#0000001c] w-full h-screen flex justify-center items-center submitActive"
+          : "absolute left-0 top-0 bg-[#0000001c] w-full h-screen flex justify-center items-center submitInactive"
       }
     >
-      <div className="bg-white p-10 rounded-xl shadow-md w-5/12 flex flex-col justify-center items-center">
+      <div className="bg-white p-10 rounded-xl shadow-md w-11/12 lg:w-5/12 flex flex-col justify-center items-center">
         <button
           className="w-full flex justify-end pb-5 hover:text-red-500"
           onClick={() => setSubmit(false)}
@@ -85,7 +85,7 @@ function SubmitEvent({ submit, setSubmit, data: getData }) {
           className="flex flex-col gap-5 xl:w-full mt-8 w-full"
           onSubmit={handleSubmit}
         >
-          <div className="flex gap-10">
+          <div className="flex md:flex-row flex-col gap-5 md:gap-10">
             <div className="flex flex-col gap-2 w-full">
               <label htmlFor="" className="text-black text-md font-normal">
                 {t("eventDate")}
